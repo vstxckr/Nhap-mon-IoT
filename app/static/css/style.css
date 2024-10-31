@@ -1,0 +1,364 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Makes the container full height */
+}
+
+.sidebar {
+    width: 200px; /* Fixed width of the sidebar */
+    background-color: #92C7CF;
+    color: white;
+    padding: 20px;
+    height: 100%; /* Full height */
+    position: fixed; /* Keeps the sidebar in place */
+}
+
+.main-content {
+    padding: 0 0 0 70px;
+    flex-grow: 1;
+    margin-left: 200px; /* Matches the width of the sidebar */
+    overflow: auto; /* Allows scrolling if content exceeds the height */
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80%;
+}
+
+.menu-box {
+    background-color: #AAD7D9;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.menu-box:hover {
+    background-color: #92C7CF;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.stats-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vh; /* Adjust space between upper and lower sections */
+    width: calc(100% - 40px); /* Adjust width for equal alignment */
+    margin-left: 20px;
+}
+
+.box {
+    padding: 20px;
+    background-color: #AAD7D9;
+    border-radius: 5px;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+}
+
+#light-box {
+    background-color: #B0C5A4;
+}
+
+#humidity-box {
+    background-color: #D37676;
+}
+
+#temperature-box {
+    background-color: #F1EF99;
+}
+
+.lower-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(100% - 30px); /* Adjust width for equal alignment */
+    margin-left: 20px;
+    height: 70vh; /* Decrease the height of the lower section */
+}
+
+.chart-container {
+    width: 78%; /* Keep the graph wider */
+    height: 100%; /* Fill the height of the lower section */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.api-doc {
+    height: 100%; /* Fill the height of the lower section */
+    background-color: gray;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* -------------------------------switch section--------------------------------------- */
+
+.switches-section {
+    width: 20%; /* Keep the switch section narrower */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FBF9F1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    height: 100%; /* Fill the height of the lower section */
+}
+
+
+.switch-box {
+    background-color: rgba(160, 160, 160, 0.26); /* Màu nền mới cho tất cả các thiết bị */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+/* Bố cục chính để hiển thị các ngăn theo chiều dọc */
+.switches-section {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+    width: 28%; /* Đảm bảo lấp đầy chiều rộng của màn hình */
+    max-width: 90vw; /* Đặt chiều rộng tối đa dựa trên chiều rộng của viewport */
+    margin: 0 auto; /* Canh giữa toàn bộ khối */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Đảm bảo các container thiết bị tự động co giãn theo kích thước màn hình */
+.device-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(160, 160, 160, 0.26);
+    padding: 2vh; /* Sử dụng đơn vị vh để kích thước thích ứng theo chiều cao màn hình */
+    margin: 2vh 0; /* Tạo khoảng cách giữa các ngăn dựa trên chiều cao của viewport */
+    border-radius: 8px;
+    width: 88%; /* Đảm bảo container thiết bị lấp đầy chiều rộng của phần chính */
+    max-width: 90vw; /* Chiều rộng tối đa dựa trên viewport */
+    height: 8vh; /* Điều chỉnh chiều cao của ngăn chứa để thích ứng với chiều cao màn hình */
+}
+
+/* Định dạng cho hình ảnh thiết bị */
+.device-image {
+    width: auto; /* Để hình ảnh giữ nguyên kích thước gốc theo chiều rộng */
+    height: auto; /* Để hình ảnh giữ nguyên kích thước gốc theo chiều cao */
+    max-width: 100px; /* Đặt chiều rộng tối đa nếu cần để hình ảnh không quá lớn */
+    max-height: 100px; /* Đặt chiều cao tối đa nếu cần để hình ảnh không quá lớn */
+    margin-right: 10px
+}
+
+/* Kiểu dáng cho nhãn của thiết bị */
+.switch-label {
+    font-size: 2vh; /* Kích thước font theo chiều cao màn hình */
+    font-weight: bold;
+    margin-right: auto;
+    padding-left: 10px;
+}
+
+/* CSS chung cho công tắc bật/tắt */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 8vh; /* Kích thước công tắc theo chiều cao màn hình */
+    height: 4vh;
+}
+
+/* Ẩn checkbox thực sự */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Tạo thanh trượt */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(160, 160, 160, 0.26);
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 3.2vh; /* Điều chỉnh kích thước theo chiều cao màn hình */
+    width: 3.2vh;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Khi checkbox được chọn, thay đổi màu nền */
+input:checked + .slider {
+    background-color: rgba(0, 255, 0, 0.47);
+}
+
+/* Di chuyển nút trượt khi checkbox được chọn */
+input:checked + .slider:before {
+    transform: translateX(4vh); /* Di chuyển nút trượt theo kích thước công tắc */
+}
+
+/* -------------------------------switch section--------------------------------------- */
+
+
+#log-table, #action-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#log-table th, #action-history-table th,
+#log-table td, #action-history-table td {
+    padding: 12px 15px;
+}
+
+#log-table thead tr, #action-history-table thead tr {
+    background-color: #92C7CF;
+    color: white;
+    text-align: left;
+}
+
+#log-table tbody tr, #action-history-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#log-table tbody tr:nth-of-type(even), #action-history-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#log-table tbody tr:last-of-type, #action-history-table tbody tr:last-of-type {
+    border-bottom: 2px solid #92C7CF;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.profile-card, .account-info, .billing-info {
+    background-color: #FBF9F1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-basis: 30%;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.profile-info h2, .account-info h2, .billing-info h2 {
+    color: #92C7CF;
+    margin-bottom: 15px;
+}
+
+.profile-button, .account-button, .billing-button {
+    background-color: #92C7CF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.profile-button:hover, .account-button:hover, .billing-button:hover {
+    background-color: #5FA3AF;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    list-style: none;
+    border-radius: 5px;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    display: block;
+    padding: 10px 15px;
+    color: #007bff;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+.pagination .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.pagination .page-link:hover {
+    color: #0056b3;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.pagination .page-link:focus {
+    z-index: 2;
+    color: #0056b3;
+    background-color: #e9ecef;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* -----------------------fan spin---------------------------- */
+@keyframes spin {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+/* Quạt quay khi có class 'spin' */
+.spin {
+    animation: spin 2s linear infinite; /* Thời gian quay: 2 giây, quay đều và liên tục */
+}
+/* -----------------------fan spin---------------------------- */
+

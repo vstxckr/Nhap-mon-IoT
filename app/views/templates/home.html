@@ -1,0 +1,66 @@
+<h1>Home Dashboard</h1>
+
+<!-- Upper Section: Three Boxes with Attribute Values -->
+
+<div class="stats-boxes">
+    <div class="box" id="light-box">
+        <span>Light Intensity:</span>
+        <span id="light_level">9</span>
+    </div>
+    <div class="box" id="humidity-box">
+        <span>Moisture:</span>
+        <span id="humidity">19</span>
+    </div>
+    <div class="box" id="temperature-box">
+        <span>Temperature:</span>
+        <span id="temperature">49</span>
+    </div>
+</div>
+
+<!-- Lower Section: Graph and Switches -->
+<div class="lower-section">
+    <!-- Left Section: Large Graph -->
+    <div class="chart-container">
+        <canvas id="satisfaction-chart"></canvas>
+    </div>
+
+    <!-- Right Section: Group of Switches -->
+    <div class="switches-section">
+    <div class="device-container">
+        <img src="..\static\assets\fan.png" alt="Fan" id="fan-image" class="device-image">
+        <div class="switch-label">Fan</div>
+        <label class="switch fan-switch">
+            <input type="checkbox" id="fan-switch">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="device-container">
+        <img src="..\static\assets\light_off.png" alt="Light Bulb" id="lightbulb-image" class="device-image">
+        <div class="switch-label">Light Bulb</div>
+        <label class="switch light-switch">
+            <input type="checkbox" id="light-switch">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="device-container">
+        <img src="..\static\assets\air-conditioner_off.png" alt="Air Condition" id="airconditioner-image" class="device-image">
+        <div class="switch-label">AC</div>
+        <label class="switch air-condition-switch">
+            <input type="checkbox" id="air-condition-switch">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="device-container">
+        <img src="..\static\assets\all_off.png" alt="All Device" id="all-image" class="device-image">
+        <div class="switch-label">All Device</div>
+        <label class="switch all-switch">
+            <input type="checkbox" id="all-switch">
+            <span class="slider"></span>
+        </label>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -5,6 +5,10 @@ from flask_mqtt import Mqtt
 from flask_socketio import SocketIO
 from pathlib import Path
 from app.models.database import Database  # Import lớp Database
+import threading
+
+# Tạo một đối tượng Lock
+file_lock = threading.Lock()
 
 
 # Initialize MQTT and SocketIO instances without the app initially
@@ -15,25 +19,6 @@ last_time = ""
 
 # Khởi tạo đối tượng database
 db = Database()
-
-# lấy dữ liệu từ bảng chartdata từ trong db và lưu vào file sensor_log.json
-with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "w") as f:
-    data = db.get_data("chartdata")
-    if (len(data) > 0):
-        for item in data:
-            json.dump(item, f, indent=4)
-            print(item)
-            f.write(',')
-
-# lấy giá trị thời gian cuối cùng để làm thời gian trước đó cho chương trình.
-if (Path("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json").exists()):
-    with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "r") as f:
-        content = f.read()
-        if (len(content) > 0):
-            data = '['+content[:-1]+']'
-            if (len(data) > 2):
-                last_time = json.loads(data)[-1]["timestamp"]
-
 # biến chứa data thời gian thực
 sensor_data = {}
 
@@ -42,15 +27,30 @@ log = ""
 # biến chứa giá trị thời gian hiện tại
 current_time = ""
 
+# mảng chứa biến giá trị theo phút để tính giá trị trung bình.
+Light = []
+Humid = []
+Temp = []
+
+# lấy dữ liệu từ bảng chartdata từ trong db và lưu vào file sensor_log.json
+with file_lock: 
+    with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "w") as f:
+        data = db.get_data("chartdata")
+        if (len(data) > 0):
+            json.dump(data, f, indent=4)
+
+# lấy giá trị thời gian cuối cùng để làm thời gian trước đó cho chương trình.
+with file_lock: 
+    if (Path("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json").exists()):
+        with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "r") as f:
+            last_time = json.load(f)[-1]["timestamp"]
+
+
 def init_mqtt_socketio(app):
     """Initialize MQTT and SocketIO with the Flask app."""
     mqtt_handler.init_app(app)
     socketio.init_app(app)  # Ensuure socketio is initialized with the app
 
-# mảng chứa biến giá trị theo phút để tính giá trị trung bình.
-Light = []
-Humid = []
-Temp = []
 
 
 @mqtt_handler.on_message()
@@ -102,18 +102,22 @@ def handle_mqtt_message(client, userdata, msg):
         Temp.clear()
 
         # mở file và ghi vào sensor_log
-        with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "a") as f:
-            json.dump(data, f, indent=4)
-            f.write(',')
-
+        with file_lock:
+            cache = db.get_data("chartdata")
+            with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "w") as f:
+                json.dump(cache, f, indent=4)
         # khởi tạo lại last_time
         last_time = current_time
+
+    rt_data = db.get_data("realtimedata", 200)
+    with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log_realtime.json", "w") as f:
+        json.dump(rt_data, f, indent=4)
 
     # update sensor_data để emit lên socket
     sensor_data.update(temp)
     
     try:
-        print(f"Updated sensor data: {sensor_data}")
+        # print(f"Updated sensor data: {sensor_data}")
 
         # socket emit
         socketio.emit('sensor_data', sensor_data)

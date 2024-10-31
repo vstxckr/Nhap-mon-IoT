@@ -5,6 +5,8 @@ var current = 1;
 let satisfactionCtx 
 let satisfactionChart 
 let global_data = {fan: 0, light: 0, air: 0, all: 0};
+let isEventListenerAttached = false;  // Cờ để kiểm tra xem sự kiện đã được gắn chưa
+
 
 const socket = io('http://localhost:5002'); // Thay đổi địa chỉ nếu server của bạn chạy trên cổng khác
 function createChart() {
@@ -54,13 +56,13 @@ function loadChart() {
     .then(response => response.text()) // Đọc file như một chuỗi text
     .then(data => {
         // Thêm [ vào đầu và ] vào cuối chuỗi JSON
-        const modifiedJsonString = `[${data.trim().slice(0, -1)}]`;
+        // const modifiedJsonString = `[${data.trim().slice(0, -1)}]`;
     
         // Chuyển đổi chuỗi JSON thành một mảng đối tượng JSON
-        const jsonArray = JSON.parse(modifiedJsonString);
+        const jsonArray = JSON.parse(data);
     
         // Giới hạn số lượng cột không quá 30
-        const limitedData = jsonArray.slice(-30); // Lấy 30 mục cuối
+        const limitedData = jsonArray.slice(-40); // Lấy 30 mục cuối
     
         // Sử dụng limitedData để cập nhật biểu đồ
         limitedData.forEach(item => {
@@ -81,58 +83,99 @@ function loadChart() {
 
 
 function createEventListenerButton() {
+    if (isEventListenerAttached) return;  // Nếu sự kiện đã gắn, không chạy lại hàm này
     /* -----------------------all on off------------------------ */
-    document.getElementById('all-switch').addEventListener('change', function () {
-        if (global_data.air == 0) {
-            this.checked = false;
-            sendPostRequest("all on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
-        } else {
-            this.checked = true;
-            sendPostRequest("all off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+    const intervalId1 = setInterval(() => {
+        const allSwitch = document.getElementById('all-switch');
+        
+        if (allSwitch) {
+            allSwitch.addEventListener('change', function () {
+                if (global_data.all == 0) {
+                    this.checked = false;
+                    sendPostRequest("all on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                } else {
+                    this.checked = true;
+                    sendPostRequest("all off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                }
+            });
+
+            // Khi đã tìm thấy và gắn sự kiện, dừng interval
+            clearInterval(intervalId1);
+            console.log("Đã tìm thấy 'all-switch' và gắn sự kiện thành công.");
         }
-    });
+    }, 1000); // Kiểm tra mỗi 100ms
     /* -----------------------all on off------------------------ */
 
     /* -----------------------fan on off------------------------ */
-    document.getElementById('fan-switch').addEventListener('change', function () {
-        if (global_data.fan == 0)
-        {
-            this.checked = false;
-            sendPostRequest("fan on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+
+    const intervalId2 = setInterval(() => {
+        const fanSwitch = document.getElementById('fan-switch');
+        
+        if (fanSwitch) {
+            fanSwitch.addEventListener('change', function () {
+                if (global_data.fan == 0) {
+                    this.checked = false;
+                    sendPostRequest("fan on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                } else {
+                    this.checked = true;
+                    sendPostRequest("fan off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                }
+            });
+
+            // Khi đã tìm thấy và gắn sự kiện, dừng interval
+            clearInterval(intervalId2);
+            console.log("Đã tìm thấy 'fan-switch' và gắn sự kiện thành công.");
         }
-        else if (global_data.fan == 1)
-        {
-            this.checked = true;
-            sendPostRequest("fan off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
-        }
-    });
+    }, 1000); // Kiểm tra mỗi 100ms
     /* -----------------------fan on off------------------------ */
 
-    /* -----------------------light on off------------------------ */
+    /* -----------------------air on off------------------------ */
     // Lắng nghe sự kiện thay đổi của công tắc bóng đèn
-    document.getElementById('light-switch').addEventListener('change', function () {
-        if (global_data.light == 0) {
-            this.checked = false;
-            sendPostRequest("light on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
-        } else {
-            this.checked = true;
-            sendPostRequest("light off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+    const intervalId3 = setInterval(() => {
+        const airSwitch = document.getElementById('air-condition-switch');
+        
+        if (airSwitch) {
+            airSwitch.addEventListener('change', function () {
+                if (global_data.air == 0) {
+                    this.checked = false;
+                    sendPostRequest("air on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                } else {
+                    this.checked = true;
+                    sendPostRequest("air off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                }
+            });
+
+            // Khi đã tìm thấy và gắn sự kiện, dừng interval
+            clearInterval(intervalId3);
+            console.log("Đã tìm thấy 'air-condition-switch' và gắn sự kiện thành công.");
         }
-    });
-    /* -----------------------light on off------------------------ */
+    }, 1000); // Kiểm tra mỗi 100ms
+    /* -----------------------air on off------------------------ */
 
 
-    /* -----------------------air on off-------------------------- */
-    document.getElementById('air-condition-switch').addEventListener('change', function () {
-        if (global_data.air == 0) {
-            this.checked = false;
-            sendPostRequest("air on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
-        } else {
-            this.checked = true;
-            sendPostRequest("air off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+    /* -----------------------light on off-------------------------- */
+    const intervalId4 = setInterval(() => {
+        const lightSwitch = document.getElementById('light-switch');
+        
+        if (lightSwitch) {
+            lightSwitch.addEventListener('change', function () {
+                if (global_data.light == 0) {
+                    this.checked = false;
+                    sendPostRequest("light on"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                } else {
+                    this.checked = true;
+                    sendPostRequest("light off"); // Gọi hàm gửi yêu cầu POST với tham số cmd
+                }
+            });
+
+            // Khi đã tìm thấy và gắn sự kiện, dừng interval
+            clearInterval(intervalId4);
+            console.log("Đã tìm thấy 'light-switch' và gắn sự kiện thành công.");
         }
-    });
-    /* -----------------------air on off-------------------------- */
+    }, 1000); // Kiểm tra mỗi 100ms
+    /* -----------------------light on off-------------------------- */
+    isEventListenerAttached = true;  // Đặt cờ thành true để ngăn gọi lại
+
 }
 
 function loadAllPages() {
@@ -226,13 +269,18 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.text()) // Đọc file như một chuỗi text
     .then(data => {
         // Thêm [ vào đầu và ] vào cuối chuỗi JSON
-        const modifiedJsonString = `[${data.trim().slice(0, -1)}]`;
+        // const modifiedJsonString = `[${data.trim().slice(0, -1)}]`;
         // Chuyển đổi chuỗi JSON thành một mảng đối tượng JSON
-        console.log(modifiedJsonString);
-        const jsonArray = JSON.parse(modifiedJsonString);
-
-        current = jsonArray.length
-        old = current
+        // console.log(modifiedJsonString);
+        const jsonArray = JSON.parse(data);
+                // Kiểm tra xem jsonArray có phần tử nào không
+        if (jsonArray.length > 0) {
+            // Lấy timestamp của phần tử cuối cùng
+            const lastTimestamp = jsonArray[jsonArray.length - 1].timestamp;
+            old = lastTimestamp; // Gán timestamp vào biến current
+        } else {
+            console.log("Mảng JSON trống, không có timestamp để lấy.");
+        }
     });
     // Gắn sự kiện click cho tất cả các menu item
     document.querySelectorAll('.menu-item').forEach(item => {
@@ -303,15 +351,17 @@ socket.on('sensor_data', function (data) {
     .then(response => response.text()) // Đọc file như một chuỗi text
     .then(data => {
         // Thêm [ vào đầu và ] vào cuối chuỗi JSON
-        const modifiedJsonString = `[${data.trim().slice(0, -1)}]`;
+        // const modifiedJsonString = `[${data.trim().slice(0, -1)}]`;
         // Chuyển đổi chuỗi JSON thành một mảng đối tượng JSON
         //console.log(modifiedJsonString);
-        const jsonArray = JSON.parse(modifiedJsonString);
+        // console.log(data)
+        const jsonArray = JSON.parse(data);
 
-        current = jsonArray.length
+        current = jsonArray[jsonArray.length - 1].timestamp;
+        console.log('current is '+current +' and old is :' + old)
         if (current != old) {
             old = current
-            const lastElement = jsonArray[current - 1];
+            const lastElement = jsonArray[jsonArray.length - 1];
 
             console.log(lastElement);
             satisfactionChart.data.labels.push(lastElement.timestamp)
@@ -320,7 +370,7 @@ socket.on('sensor_data', function (data) {
             satisfactionChart.data.datasets[2].data.push(lastElement.temperature);
 
             // Cập nhật lại biểu đồ sau khi thêm dữ liệu từ file JSON
-            if (satisfactionChart.data.datasets[0].data.length > 30) {
+            if (satisfactionChart.data.datasets[0].data.length > 40) {
                 satisfactionChart.data.labels.shift(lastElement.timestamp)
                 satisfactionChart.data.datasets[0].data.shift();
                 satisfactionChart.data.datasets[1].data.shift();

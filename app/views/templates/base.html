@@ -41,7 +41,6 @@
             loadAllPages();
 
             loadPage('home', '.home-content');
-            createEventListenerButton()
 
             document.querySelectorAll('.menu-item').forEach(item => {
                 item.addEventListener('click', function (e) {
@@ -50,6 +49,7 @@
                     loadPage(page, '.' + page + '-content');  // Nạp trang tương ứng
                 });
             });
+            createEventListenerButton();
         })
     </script>
 </body>

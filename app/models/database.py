@@ -30,7 +30,7 @@ class Database:
             """
             cursor.execute(query, (timestamp, light_level, humidity, temperature))
             self.connection.commit()
-            print("Data inserted successfully.")
+            # print("Data inserted successfully.")
         except Error as e:
             print(f"Error inserting data: {e}")
 
@@ -45,9 +45,10 @@ class Database:
         
         try:
             cursor = self.connection.cursor(dictionary=True)
-            query = "SELECT * FROM "+table+" ORDER BY id ASC LIMIT %s"
+            query = "SELECT * FROM "+table+" ORDER BY id DESC LIMIT %s"
             cursor.execute(query, (limit,))
             rows = cursor.fetchall()
+            rows.reverse()
             return rows
         except Error as e:
             print(f"Error fetching data: {e}")

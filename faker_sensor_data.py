@@ -13,7 +13,8 @@ while True:
         "time": current_time,
         "light": 0,
         "air": 0,
-        "fan": 0
+        "fan": 0,
+        "all": 0
     })
 
     # Use subprocess.run to execute the command

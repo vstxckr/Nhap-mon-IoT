@@ -14,7 +14,11 @@ main_controller = Blueprint('main_controller', __name__)
 @main_controller.route('/api/v1/sensor/pulldata', methods=['GET'])
 def get_sensor_data():
     """API để lấy dữ liệu cảm biến gần nhất."""
-    return handle_get_sensor_data() 
+    isrt = request.args.get('realtime')
+    # print(isrt)
+    if (isrt == None):
+        isrt = "0"
+    return handle_get_sensor_data(isrt) 
 
 @main_controller.route('/api/v1/device/status', methods=['POST'])
 def get_device_status():
@@ -43,27 +47,27 @@ def home():
 
 @main_controller.route('/data_sensor')
 def data_sensor():
-    page = request.args.get('page', 1, type=int)
-    logs = SensorData.load_logs("sensor_log.json")
-    per_page = 15
-    total = len(logs)
-    start = (page - 1) * per_page
-    end = start + per_page
-    logs_paginated = logs[start:end]
+    # page = request.args.get('page', 1, type=int)
+    # logs = SensorData.load_logs("sensor_log.json")
+    # per_page = 15
+    # total = len(logs)
+    # start = (page - 1) * per_page
+    # end = start + per_page
+    # logs_paginated = logs[start:end]
 
-    return render_template('data_sensor.html', logs=logs_paginated, page=page, total=total, per_page=per_page)
+    return render_template('data_sensor.html')#, logs=logs_paginated, page=page, total=total, per_page=per_page)
 
 @main_controller.route('/action_history')
 def action_history():
-    page = request.args.get('page', 1, type=int)
-    logs = SensorData.load_logs("action_log.json")
-    per_page = 15
-    total = len(logs)
-    start = (page - 1) * per_page
-    end = start + per_page
-    logs_paginated = logs[start:end]
+    # page = request.args.get('page', 1, type=int)
+    # logs = SensorData.load_logs("action_log.json")
+    # per_page = 15
+    # total = len(logs)
+    # start = (page - 1) * per_page
+    # end = start + per_page
+    # logs_paginated = logs[start:end]
 
-    return render_template('action_history.html', logs=logs_paginated, page=page, total=total, per_page=per_page)
+    return render_template('action_history.html')#, logs=logs_paginated, page=page, total=total, per_page=per_page)
 
 @main_controller.route('/profile')
 def profile():

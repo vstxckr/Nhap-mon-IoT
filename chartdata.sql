@@ -15,3 +15,10 @@ CREATE TABLE realtimedata (
 	    humidity FLOAT,
 	    temperature FLOAT
 );
+
+CREATE TABLE actionhistory (
+	    id INT AUTO_INCREMENT PRIMARY KEY,
+	    topic VARCHAR(20),
+	    command VARCHAR(20),
+	    status VARCHAR(20),
+);

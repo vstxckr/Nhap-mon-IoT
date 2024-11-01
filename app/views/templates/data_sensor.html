@@ -1,30 +1,33 @@
-<div style="display: flex; align-items: center; justify-content: space-between;">
-    <h1>Data Sensor</h1>
-    
-    <!-- Search Form -->
-    <form id="deviceSearchForm" class="form-inline">
-        <input type="text" id="deviceName" name="deviceName" class="form-control mr-2" placeholder="Search by Device Name">
-        <button type="button" class="btn btn-primary" onclick="searchLogs()">Search</button>
-    </form>
+<div>
+        <!-- Search Form -->
+        <div>
+            <h1>Data Sensor</h1>
+            <div class="search-form">
+                <input type="text" id="deviceName" placeholder="Search by Device Name" oninput="filterLogs()">
+                <button type="button" onclick="searchLogs()">Search</button>
+                <select id="perPageSelect" class="select-logs-per-page" onchange="updatePerPage()">
+                    <option value="10">10 logs/page</option>
+                    <option value="15">15 logs/page</option>
+                    <option value="20">20 logs/page</option>
+                </select>
+            </div>
+        </div>
+
+        <table id="log-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('id')">ID</th>
+                    <th onclick="sortTable('timestamp')">timestamp</th>
+                    <th onclick="sortTable('light_level')">light level</th>
+                    <th onclick="sortTable('humidity')">humidity</th>
+                    <th onclick="sortTable('temperature')">temperature</th>
+                </tr>
+            </thead>
+            <tbody id="logTableBody">
+                <!-- Nội dung bảng sẽ được thêm bởi JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div id="pagination"></div>
 </div>
-
-
-<script>
-    function searchLogs() {
-        const deviceName = document.getElementById('deviceName').value.toLowerCase();
-        const tableBody = document.getElementById('logTableBody');
-        const rows = tableBody.getElementsByTagName('tr');
-
-        for (let i = 0; i < rows.length; i++) {
-            const deviceCell = rows[i].getElementsByTagName('td')[1];
-            if (deviceCell) {
-                const device = deviceCell.textContent || deviceCell.innerText;
-                if (device.toLowerCase().indexOf(deviceName) > -1) {
-                    rows[i].style.display = '';
-                } else {
-                    rows[i].style.display = 'none';
-                }
-            }
-        }
-    }
-</script>

@@ -13,3 +13,36 @@ function loadPage(page, className) {
         console.error('Page not found:', page);
     }
 }
+
+
+function loadAllPages() {
+    const pages = ['home', 'data_sensor', 'action_history', 'profile']; // Danh sách các trang cần tải
+
+    pages.forEach(page => {
+        // Tạo đường dẫn đến file HTML
+        // Fetch file HTML và nạp nội dung vào thẻ div tương ứng
+        fetch(page)
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error(`Page not found: ${page}`);
+                }
+            })
+            .then(data => {
+                // Tìm phần tử tương ứng với class của page
+                const targetElement = document.getElementById(`${page}-content`);
+                if (targetElement) {
+                    // Chèn nội dung HTML vào thẻ div tương ứng
+                    targetElement.innerHTML = data;
+                    if (page === 'home') {
+                        createChart()
+                        loadChart()
+                    }
+                } else {
+                    console.error(`Element with class ${page} not found.`);
+                }
+            })
+            .catch(error => console.error('Error loading page:', error));
+    });
+}

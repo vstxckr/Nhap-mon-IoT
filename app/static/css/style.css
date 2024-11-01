@@ -236,7 +236,7 @@ input:checked + .slider:before {
 
 /* -------------------------------switch section--------------------------------------- */
 
-
+/*
 #log-table, #action-history-table {
     width: 100%;
     border-collapse: collapse;
@@ -267,7 +267,7 @@ input:checked + .slider:before {
 #log-table tbody tr:last-of-type, #action-history-table tbody tr:last-of-type {
     border-bottom: 2px solid #92C7CF;
 }
-
+*/
 .profile-container {
     display: flex;
     justify-content: space-around;
@@ -306,7 +306,7 @@ input:checked + .slider:before {
 .profile-button:hover, .account-button:hover, .billing-button:hover {
     background-color: #5FA3AF;
 }
-
+/*
 .pagination {
     display: flex;
     justify-content: center;
@@ -349,6 +349,7 @@ input:checked + .slider:before {
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+*/
 
 /* -----------------------fan spin---------------------------- */
 @keyframes spin {
@@ -362,3 +363,124 @@ input:checked + .slider:before {
 }
 /* -----------------------fan spin---------------------------- */
 
+/* Đặt lại vị trí cho header chứa tiêu đề và thanh tìm kiếm */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Tiêu đề */
+.header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #4a90e2;
+    margin: 0;
+}
+
+/* Search Form */
+.search-form {
+    display: block;
+    float: right;
+    margin-right: 2vh;
+    margin-bottom: 1vh;
+    margin-top: -6vh;
+}
+
+.search-form input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: #4a90e2;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #357ab8;
+}
+
+/* Select logs per page */
+.select-logs-per-page {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Table */
+#log-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#log-table thead {
+    background-color: #92C7CF;
+    color: #fff;
+}
+
+#log-table th, #log-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#log-table th {
+    cursor: pointer;
+}
+
+#log-table tbody tr:hover {
+    background-color: #f4f4f4;
+}
+
+/* Pagination Styles */
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#pagination .page-link {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #4a90e2;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#pagination .page-link:hover {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+#pagination .page-link.active {
+    background-color: #4a90e2;
+    color: #fff;
+    border-color: #4a90e2;
+    font-weight: bold;
+}

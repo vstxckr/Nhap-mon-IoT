@@ -15,10 +15,12 @@ main_controller = Blueprint('main_controller', __name__)
 def get_sensor_data():
     """API để lấy dữ liệu cảm biến gần nhất."""
     isrt = request.args.get('realtime')
-    # print(isrt)
+    isrv = request.args.get('reverse')
     if (isrt == None):
         isrt = "0"
-    return handle_get_sensor_data(isrt) 
+    if (isrv == None):
+        isrv = "0"
+    return handle_get_sensor_data(isrt, isrv) 
 
 @main_controller.route('/api/v1/device/status', methods=['POST'])
 def get_device_status():
@@ -32,7 +34,7 @@ def control_device():
     print(command)
     return handle_control_device(command) 
 
-@main_controller.route('/api/v1/sensor/querydata', methods=['POST'])
+@main_controller.route('/api/v1/log/query', methods=['POST'])
 def query_sensor_data():
     """API để lấy dữ liệu sensor."""
     return handle_query_sensor_data() 
@@ -47,31 +49,14 @@ def home():
 
 @main_controller.route('/data_sensor')
 def data_sensor():
-    # page = request.args.get('page', 1, type=int)
-    # logs = SensorData.load_logs("sensor_log.json")
-    # per_page = 15
-    # total = len(logs)
-    # start = (page - 1) * per_page
-    # end = start + per_page
-    # logs_paginated = logs[start:end]
 
     return render_template('data_sensor.html')#, logs=logs_paginated, page=page, total=total, per_page=per_page)
 
 @main_controller.route('/action_history')
 def action_history():
-    # page = request.args.get('page', 1, type=int)
-    # logs = SensorData.load_logs("action_log.json")
-    # per_page = 15
-    # total = len(logs)
-    # start = (page - 1) * per_page
-    # end = start + per_page
-    # logs_paginated = logs[start:end]
 
     return render_template('action_history.html')#, logs=logs_paginated, page=page, total=total, per_page=per_page)
 
 @main_controller.route('/profile')
 def profile():
     return render_template('profile.html')
-
-# @main_controller.route('/data/sensor_log.json')
-# def serve_data():

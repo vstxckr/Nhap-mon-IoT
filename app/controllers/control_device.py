@@ -35,5 +35,6 @@ def handle_control_device(command):
         "-p", "8668"
     ])
     # db.insert('device_history', '' 'command')
+    # db.insert_device_history()
     print("publish data: %s" % command)
     return jsonify(result)

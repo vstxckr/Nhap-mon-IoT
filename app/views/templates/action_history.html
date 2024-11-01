@@ -1,30 +1,34 @@
-<div style="display: flex; align-items: center; justify-content: space-between;">
-    <h1>Action History</h1>
-    
-    <!-- Search Form -->
-    <form id="actionSearchForm" class="form-inline">
-        <input type="text" id="deviceName" name="deviceName" class="form-control mr-2" placeholder="Search by Device Name">
-        <button type="button" class="btn btn-primary" onclick="searchActionLogs()">Search</button>
-    </form>
+<!-- <script src="{{ url_for('static', filename='js/sensor_log.js') }}"></script> -->
+<div>
+        <!-- Search Form -->
+        <div>
+            <h1>Action History</h1>
+            <div class="search-form">
+                <input type="text" id="deviceName" placeholder="Search by Device Name" oninput="filterLogs()">
+                <button type="button" onclick="searchLogs()">Search</button>
+                <select id="perPageSelect" class="select-logs-per-page" onchange="updatePerPage()">
+                    <option value="10">10 logs/page</option>
+                    <option value="15">15 logs/page</option>
+                    <option value="20">20 logs/page</option>
+                </select>
+            </div>
+        </div>
+
+        <table id="log-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('Id')">ID</th>
+                    <th onclick="sortTable('Device')">timestamp</th>
+                    <th onclick="sortTable('Operation')">light level</th>
+                    <th onclick="sortTable('Status')">humidity</th>
+                    <th onclick="sortTable('Timestamp')">temperature</th>
+                </tr>
+            </thead>
+            <tbody id="hlogTableBody">
+                <!-- Nội dung bảng sẽ được thêm bởi JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div id="pagination"></div>
 </div>
-
-
-<script>
-    function searchActionLogs() {
-        const deviceName = document.getElementById('deviceName').value.toLowerCase();
-        const tableBody = document.getElementById('actionTableBody');
-        const rows = tableBody.getElementsByTagName('tr');
-
-        for (let i = 0; i < rows.length; i++) {
-            const deviceCell = rows[i].getElementsByTagName('td')[1];
-            if (deviceCell) {
-                const device = deviceCell.textContent || deviceCell.innerText;
-                if (device.toLowerCase().indexOf(deviceName) > -1) {
-                    rows[i].style.display = '';
-                } else {
-                    rows[i].style.display = 'none';
-                }
-            }
-        }
-    }
-</script>

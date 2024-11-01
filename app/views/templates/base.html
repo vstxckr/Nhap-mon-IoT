@@ -11,10 +11,13 @@
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <script src="https://cdn.socket.io/2.0.0/socket.io.min.js"></script> -->
     <script src="{{ url_for('static', filename='js/loadPage.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <!-- <script>const satisfactionCtx = document.getElementById('satisfaction-chart').getContext('2d');</script> -->
+    <script src="{{ url_for('static', filename='js/sensorLog.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/eventListener.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/myChart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/handleColor.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/handleRequest.js') }}"></script>
     <div class="container">
         <div class="sidebar">
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
@@ -35,7 +38,6 @@
         </div>
     </div>
     <script>
-
         document.addEventListener("DOMContentLoaded", function () {
             // Load trang mặc định ban đầu
             loadAllPages();
@@ -49,7 +51,6 @@
                     loadPage(page, '.' + page + '-content');  // Nạp trang tương ứng
                 });
             });
-            createEventListenerButton();
         })
     </script>
 </body>

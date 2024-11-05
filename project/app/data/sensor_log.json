@@ -1,12 +1,5 @@
 [
     {
-        "id": 2578,
-        "timestamp": "2024-11-05 22:01",
-        "light_level": 97.13,
-        "humidity": 77.47,
-        "temperature": 24.07
-    },
-    {
         "id": 2579,
         "timestamp": "2024-11-05 22:02",
         "light_level": 93.21,
@@ -698,5 +691,12 @@
         "light_level": 86.93,
         "humidity": 80.93,
         "temperature": 25.07
+    },
+    {
+        "id": 2678,
+        "timestamp": "2024-11-05 23:41",
+        "light_level": 95.6,
+        "humidity": 81.0,
+        "temperature": 25.2
     }
 ]

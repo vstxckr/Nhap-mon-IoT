@@ -1,2 +1,2 @@
-def handle_query_sensor_data():
-    return {}
+from flask import request
+from app.models.database import Database

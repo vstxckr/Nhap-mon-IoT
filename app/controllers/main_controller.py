@@ -6,7 +6,8 @@ from app.controllers.mqtt_handler import init_mqtt_socketio, sensor_data  # Impo
 from .get_sensor_data import handle_get_sensor_data
 from .get_device_status import handle_get_device_status
 from .control_device import handle_control_device 
-from .query_sensor_data import handle_query_sensor_data 
+# from .query_sensor_data import handle_query_sensor_data 
+from app.models.database import Database
 
 # Khởi tạo SocketIO
 main_controller = Blueprint('main_controller', __name__)
@@ -22,7 +23,7 @@ def get_sensor_data():
         isrv = "0"
     return handle_get_sensor_data(isrt, isrv) 
 
-@main_controller.route('/api/v1/device/status', methods=['POST'])
+@main_controller.route('/api/v1/device/status', methods=['GET'])
 def get_device_status():
     """API lấy dữ liệu."""
     return handle_get_device_status() 
@@ -37,7 +38,30 @@ def control_device():
 @main_controller.route('/api/v1/log/query', methods=['POST'])
 def query_sensor_data():
     """API để lấy dữ liệu sensor."""
-    return handle_query_sensor_data() 
+    db = Database()
+    data = request.json
+    log_type = data.get('type', 'sensorLog')  # Default to 'sensorLog' if type is not provided
+    start_date = data.get('startDate')
+    end_date = data.get('endDate')
+    sort = data.get('sort', 'latest')
+    limit = data.get('numberOfRecords', 100)
+    filters = data.get('filters', {})
+
+    # Determine which table to query based on type
+    if log_type == 'actionLog':
+        table = 'actionhistory'
+    elif log_type == 'sensorLog':
+        table = 'realtimedata'
+    else:
+        return jsonify({"error": "Invalid log type specified"}), 400
+
+    print(f"table: {table}, start:{start_date}, end: {end_date}, filters: {filters}, sort:{sort}, limit: {limit}")
+
+    # Fetch data using the query_logs method
+    logs = db.query_logs(table=table, start_date=start_date, end_date=end_date, filters=filters, sort=sort, limit=limit)
+    # print(logs)
+    
+    return jsonify(logs)
 
 @main_controller.route('/')
 def one():

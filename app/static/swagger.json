@@ -1,0 +1,187 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "IoT API",
+    "description": "API documentation for IoT application handling sensor data, device control, and action logs.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api/v1",
+  "schemes": ["http"],
+  "paths": {
+    "/sensor/pulldata": {
+      "get": {
+        "summary": "Get sensor data",
+        "description": "Retrieve the latest sensor data based on real-time and reverse flags.",
+        "parameters": [
+          {
+            "name": "realtime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Real-time mode (0 or 1)"
+          },
+          {
+            "name": "reverse",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Reverse mode (0 or 1)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with sensor data",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/device/status": {
+      "get": {
+        "summary": "Get device status",
+        "description": "Retrieve the current status of devices.",
+        "responses": {
+          "200": {
+            "description": "Successful response with device status",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device/control": {
+      "post": {
+        "summary": "Control a device",
+        "description": "Send a command to control a device.",
+        "parameters": [
+          {
+            "name": "command",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cmd": {
+                  "type": "string",
+                  "example": "fan ON"
+                }
+              }
+            },
+            "description": "Command to control a device (e.g., 'fan ON')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Command successfully executed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": { "type": "string" },
+                "command": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/log/query": {
+      "post": {
+        "summary": "Query logs",
+        "description": "Query action or sensor logs based on specified parameters.",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["sensorLog", "actionLog"],
+              "example": "sensorLog"
+            },
+            "description": "Type of log to retrieve ('sensorLog' or 'actionLog')"
+          },
+          {
+            "name": "startDate",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2023-01-01"
+            },
+            "description": "Start date for the log query"
+          },
+          {
+            "name": "endDate",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2023-12-31"
+            },
+            "description": "End date for the log query"
+          },
+          {
+            "name": "sort",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["latest", "oldest"],
+              "example": "latest"
+            },
+            "description": "Sort order for the logs"
+          },
+          {
+            "name": "numberOfRecords",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 100
+            },
+            "description": "Number of records to retrieve"
+          },
+          {
+            "name": "filters",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "timestamp": { "type": "string" },
+                "light_level": { "type": "string" },
+                "humidity": { "type": "string" },
+                "temperature": { "type": "string" }
+              }
+            },
+            "description": "Filters for specific fields in the logs"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful log query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid log type specified"
+          }
+        }
+      }
+    }
+  }
+}

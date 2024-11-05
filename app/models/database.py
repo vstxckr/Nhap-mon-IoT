@@ -1,3 +1,4 @@
+# database.py
 import mysql.connector
 from mysql.connector import Error
 import json
@@ -103,11 +104,97 @@ class Database:
         except Error as e:
             print(f"Error fetching data: {e}")
             return []
+    def get_device_log(self, limit=100):
+        """Lấy dữ liệu từ bảng action history"""
+        if not self.connection:
+            print("Not connected to database.")
+            return []
+        try:
+            cursor = self.connection.cursor(dictionary=True)
+            query = "SELECT * FROM actionhistory  ORDER BY id DESC LIMIT %s;"
+            cursor.execute(query, (limit,))
+            rows = cursor.fetchall()
+            return rows
+        except Error as e:
+            print(f"Error fetching data: {e}")
+            return []
 
+#     def close_connection(self):
+#         """Đóng kết nối database."""
+#         if self.connection and self.connection.is_connected():
+#             self.connection.close()
+#             print("Database connection closed.")
 
+# import mysql.connector
+# from mysql.connector import Error
+# import json
+# from datetime import datetime
+
+# class Database:
+    # def __init__(self, host="localhost", user="root", password="", database="manhdx"):
+    #     try:
+    #         self.connection = mysql.connector.connect(
+    #             host=host,
+    #             user=user,
+    #             password=password,
+    #             database=database
+    #         )
+    #         if self.connection.is_connected():
+    #             print("Connected to MySQL database")
+    #     except Error as e:
+    #         print(f"Error connecting to MySQL database: {e}")
+    #         self.connection = None
+
+    # Existing methods (e.g., insert_data, insert_device_history, etc.) go here
+
+    def query_logs(self, table, start_date=None, end_date=None, filters={}, sort='latest', limit=100):
+        """Query logs with specific filters, date range, sort order, and limit."""
+        if not self.connection:
+            print("Not connected to database.")
+            return []
+
+        try:
+            cursor = self.connection.cursor(dictionary=True)
+            query = f"SELECT * FROM {table} WHERE 1=1"
+            params = []
+
+            # Apply date range filtering
+            if start_date:
+                query += " AND timestamp >= %s"
+                params.append(start_date)
+            if end_date:
+                query += " AND timestamp <= %s"
+                params.append(end_date)
+
+            # Apply column filters
+            for field, value in filters.items():
+                if value:
+                    query += f" AND {field} LIKE %s"
+                    params.append(f"%{value}%")
+
+            # Apply sorting
+            order = 'DESC' if sort == 'latest' else 'ASC'
+            query += f" ORDER BY timestamp {order} LIMIT %s"
+            params.append(limit)
+            print(query, params)
+
+            cursor.execute(query, tuple(params))
+            rows = cursor.fetchall()
+            return rows
+        except Error as e:
+            print(f"Error querying logs: {e}")
+            return []
+
+    def query_device_history(self, start_date=None, end_date=None, filters={}, sort='latest', limit=100):
+        """Query device action history with filters, date range, sort order, and limit."""
+        return self.query_logs('actionhistory', start_date, end_date, filters, sort, limit)
+
+    def convert_to_json(self, data):
+        """Convert MySQL data result to JSON format."""
+        return json.dumps(data, default=str)
 
     def close_connection(self):
-        """Đóng kết nối database."""
+        """Close the database connection."""
         if self.connection and self.connection.is_connected():
             self.connection.close()
             print("Database connection closed.")

@@ -17,7 +17,15 @@ socket.on('sensor_data', function (data) {
     global_data.light = data.light
     global_data.air = data.air
     global_data.all = data.all
-    fetchLogs()
+
+    if (actionrealtime == 0) {
+        fetchActionLogs()
+    }
+    if (sensorrealtime == 0) {
+        fetchSensorLogs()
+    }
+    setActionRealTime()
+    setSensorRealTime()
 
     if (data.fan != 1) {
         document.getElementById('fan-switch').checked = false;

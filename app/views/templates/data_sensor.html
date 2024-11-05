@@ -1,33 +1,87 @@
 <div>
-        <!-- Search Form -->
-        <div>
-            <h1>Data Sensor</h1>
-            <div class="search-form">
-                <input type="text" id="deviceName" placeholder="Search by Device Name" oninput="filterLogs()">
-                <button type="button" onclick="searchLogs()">Search</button>
-                <select id="perPageSelect" class="select-logs-per-page" onchange="updatePerPage()">
-                    <option value="10">10 logs/page</option>
-                    <option value="15">15 logs/page</option>
-                    <option value="20">20 logs/page</option>
-                </select>
-            </div>
+    <!-- Search Form -->
+    <div>
+        <h1>Sensor Logs</h1>
+    </div>
+    <div>
+        <div class="search-form">
+            <!-- Date Range Picker -->
+            <label for="sensorStartDate">From</label>
+            <input type="date" id="sensorStartDate" placeholder="Start Date">
+            <label for="sensorEndDate">To</label>
+            <input type="date" id="sensorEndDate" placeholder="End Date">
+            <button type="button" id="sortToggle" onclick="toggleSensorSortOrder()">Latest</button>
+            <button type="button" id="sensorRT" onclick="toggleSensorRealTime()">Toggle RT</button>
+
+            <!-- General Search -->
+            <input type="text" id="sensorTopicName" placeholder="Number of records">
+            <button type="button" onclick="querySensorFromDB()">Search</button>
+            <select id="sensorLogsPerPageSelect" class="select-logs-per-page" onchange="changedLogPerPage()">
+                <option value="10">10 logs/page</option>
+                <option value="15">15 logs/page</option>
+                <option value="20">20 logs/page</option>
+            </select>
         </div>
+    </div>
+    <div class="filter-container">
+        <div class="filter-box">
+            <label for="id-query-db-box">ID</label>
+            <input type="text" class="column-filter query-db-box" id="id-query-db-box" placeholder="Search ID">
+        </div>
+        <div class="filter-box">
+            <label for="timestamp-query-db-box">Timestamp</label>
+            <input type="text" class="column-filter query-db-box" id="timestamp-query-db-box" placeholder="Search Timestamp">
+        </div>
+        <div class="filter-box">
+            <label for="light-level-query-db-box">Light Level</label>
+            <input type="text" class="column-filter query-db-box" id="light-level-query-db-box" placeholder="Search Light Level">
+        </div>
+        <div class="filter-box">
+            <label for="temperature-query-db-box">Humidity</label>
+            <input type="text" class="column-filter query-db-box" id="humidity-query-db-box" placeholder="Search Humidity">
+        </div>
+        <div class="filter-box">
+            <label for="temperature-query-db-box">Temperature</label>
+            <input type="text" class="column-filter query-db-box" id="temperature-query-db-box" placeholder="Search Temperature">
+        </div>
+    </div>
 
-        <table id="log-table">
-            <thead>
-                <tr>
-                    <th onclick="sortTable('id')">ID</th>
-                    <th onclick="sortTable('timestamp')">timestamp</th>
-                    <th onclick="sortTable('light_level')">light level</th>
-                    <th onclick="sortTable('humidity')">humidity</th>
-                    <th onclick="sortTable('temperature')">temperature</th>
-                </tr>
-            </thead>
-            <tbody id="logTableBody">
-                <!-- Nội dung bảng sẽ được thêm bởi JavaScript -->
-            </tbody>
-        </table>
+    <div id="sensorPagination"></div>
 
-        <!-- Pagination -->
-        <div id="pagination"></div>
+    <table id="sensorLogTable">
+        <thead>
+            <tr>
+                <th>ID 
+                    <button class="sort-btn" onclick="sortSensorLogTable('id')">⏳</button>
+                    <!-- <button class="filter-btn" onclick="showSensorFilterBox('id')">🔍</button> -->
+                    <input type="text"  class="column-filter" id="sensor-filter-id" placeholder="Search ID" oninput="applyAllFilters()">
+                </th>
+                <th>Timestamp 
+                    <button class="sort-btn" onclick="sortSensorLogTable('timestamp')">⏳</button>
+                    <!-- <button class="filter-btn" onclick="showSensorFilterBox('timestamp')">🔍</button> -->
+                    <input type="text"  class="column-filter" id="sensor-filter-timestamp" placeholder="Search Timestamp" oninput="applyAllFilters()">
+                </th>
+                <th>Light Level 
+                    <button class="sort-btn" onclick="sortSensorLogTable('light_level')">⏳</button>
+                    <!-- <button class="filter-btn" onclick="showSensorFilterBox('light-level')">🔍</button> -->
+                    <input type="text"  class="column-filter" id="sensor-filter-light-level" placeholder="Search Light Level" oninput="applyAllFilters()">
+                </th>
+                <th>Humidity 
+                    <button class="sort-btn" onclick="sortSensorLogTable('humidity')">⏳</button>
+                    <!-- <button class="filter-btn" onclick="showSensorFilterBox('humidity')">🔍</button> -->
+                    <input type="text"  class="column-filter" id="sensor-filter-humidity" placeholder="Search Humidity" oninput="applyAllFilters()">
+                </th>
+                <th>Temperature 
+                    <button class="sort-btn" onclick="sortSensorLogTable('temperature')">⏳</button>
+                    <!-- <button class="filter-btn" onclick="showSensorFilterBox('temperature')">🔍</button> -->
+                    <input type="text"  class="column-filter" id="sensor-filter-temperature" placeholder="Search Temperature" oninput="applyAllFilters()">
+                </th>
+            </tr>
+        </thead>
+        <tbody id="sensorLogTableBody">
+            <!-- Content will be generated dynamically -->
+        </tbody>
+    </table>
+
+    <!-- Pagination -->
 </div>

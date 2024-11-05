@@ -375,7 +375,7 @@ input:checked + .slider:before {
 .header h1 {
     font-size: 24px;
     font-weight: 500;
-    color: #4a90e2;
+    color: #92C7CF;
     margin: 0;
 }
 
@@ -398,14 +398,14 @@ input:checked + .slider:before {
 }
 
 .search-form input[type="text"]:focus {
-    border-color: #4a90e2;
+    border-color: #92C7CF;
 }
 
 .search-form button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #4a90e2;
+    background-color: #92C7CF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -464,7 +464,7 @@ input:checked + .slider:before {
     margin: 0 5px;
     padding: 8px 12px;
     font-size: 16px;
-    color: #4a90e2;
+    color: #92C7CF;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -474,13 +474,433 @@ input:checked + .slider:before {
 }
 
 #pagination .page-link:hover {
-    background-color: #4a90e2;
+    background-color: #92C7CF;
     color: #fff;
 }
 
 #pagination .page-link.active {
-    background-color: #4a90e2;
+    background-color: #92C7CF;
     color: #fff;
-    border-color: #4a90e2;
+    border-color: #92C7CF;
     font-weight: bold;
 }
+/* Action Log Container */
+.action-log-container {
+    margin-top: 40px;
+}
+
+/* Action Log Header */
+.action-log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.action-log-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #D37676; /* Use a different color to distinguish */
+    margin: 0;
+}
+
+/* Action Log Search Form */
+.action-search-form {
+    display: inline-flex;
+    float: right;
+    margin-right: 2vh;
+}
+
+.action-search-form input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.action-search-form input[type="text"]:focus {
+    border-color: #D37676; /* Matches header color */
+}
+
+.action-search-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #D37676;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-search-form button:hover {
+    background-color: #B96060; /* Darker shade for hover */
+}
+
+/* Action Log Select logs per page */
+.action-select-logs-per-page {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Action Log Table */
+#actionLogTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#actionLogTable thead {
+    background-color: #D37676; /* Different background color for action log */
+    color: #fff;
+}
+
+#actionLogTable th, #actionLogTable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#actionLogTable th {
+    cursor: pointer;
+}
+
+#actionLogTable tbody tr:hover {
+    background-color: #f4f4f4;
+}
+
+/* Action Log Pagination */
+#actionPagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#actionPagination .page-link {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #D37676; /* Matches header color */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#actionPagination .page-link:hover {
+    background-color: #D37676;
+    color: #fff;
+}
+
+#actionPagination .page-link.active {
+    background-color: #D37676;
+    color: #fff;
+    border-color: #D37676;
+    font-weight: bold;
+}
+
+
+/*             sensor  log css                 */
+/* Sensor Log Container */
+.sensor-log-container {
+    margin-top: 40px;
+}
+
+/* Sensor Log Header */
+.sensor-log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.sensor-log-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #92C7CF; /* Different color for sensor logs */
+    margin: 0;
+}
+
+/* Sensor Log Search Form */
+.sensor-search-form {
+    display: inline-flex;
+    float: right;
+    margin-right: 2vh;
+}
+
+.sensor-search-form input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.sensor-search-form input[type="text"]:focus {
+    border-color: #92C7CF; /* Matches header color */
+}
+
+.sensor-search-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #92C7CF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sensor-search-form button:hover {
+    background-color: #357AB8; /* Darker shade for hover */
+}
+
+/* Sensor Log Select logs per page */
+.sensor-select-logs-per-page {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Sensor Log Table */
+#sensorLogTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#sensorLogTable thead {
+    background-color: #92C7CF; /* Unique background color for sensor logs */
+    color: #fff;
+}
+
+#sensorLogTable th, #sensorLogTable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#sensorLogTable th {
+    cursor: pointer;
+}
+
+#sensorLogTable tbody tr:hover {
+    background-color: #f4f4f4;
+}
+
+/* Sensor Log Pagination */
+#sensorPagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#sensorPagination .page-link {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #92C7CF; /* Matches header color */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#sensorPagination .page-link:hover {
+    background-color: #92C7CF;
+    color: #fff;
+}
+
+#sensorPagination .page-link.active {
+    background-color: #92C7CF;
+    color: #fff;
+    border-color: #92C7CF;
+    font-weight: bold;
+}
+
+/*             sensor  log css                 */
+
+
+/*             filter and sort button                      */
+/* General button styling */
+.sort-btn,
+.filter-btn {
+    padding: 6px 8px;       /* Adjust padding for uniform size */
+    margin-left: 3px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 30px;            /* Fixed width */
+    height: 30px;           /* Fixed height */
+    display: inline-flex;   /* Aligns icon centered */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sort button styling */
+.sort-btn {
+    background-color: #007bff; /* Blue color */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.sort-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Filter button styling */
+.filter-btn {
+    background-color: #6c757d; /* Gray color */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+
+/* General styling for filter container */
+.filter-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/* Styling for each filter box */
+.filter-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Label styling */
+.filter-box label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Input styling */
+.column-filter {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Specific styling for query-db-box class */
+.query-db-box {
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333; /* Dark text color */
+    font-weight: bold;
+}
+
+/* Focus style for query-db-box */
+.query-db-box:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none;
+}
+
+/* Specific styling for IDs */
+#id-query-db-box,
+#action-id-query-db-box {
+    background-color: #e3f2fd; /* Light blue shade */
+}
+
+#timestamp-query-db-box,
+#action-timestamp-query-db-box {
+    background-color: #e8f5e9; /* Light green shade */
+}
+
+#light-level-query-db-box,
+#action-topic-query-db-box {
+    background-color: #fff3e0; /* Light orange shade */
+}
+
+#temperature-query-db-box,
+#action-command-query-db-box {
+    background-color: #fce4ec; /* Light pink shade */
+}
+
+
+
+/*             filter and sort button                      */
+
+
+/*                      sensor date                       */
+/* Date Input Field Styling */
+#sensorStartDate,
+#sensorEndDate,
+#actionStartDate,
+#actionEndDate {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-right: 10px;
+    background-color: #f8f9fa; /* Light background color */
+    color: #495057;
+    width: 150px; /* Fixed width for consistency */
+    transition: border-color 0.3s ease;
+}
+
+/* Focus style for date input */
+#sensorStartDate:focus,
+#sensorEndDate:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button styling to match date input */
+button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Filter and Real-Time Toggle Button Styles */
+button[type="button"] {
+    background-color: #6c757d; /* Gray color */
+    color: white;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+#sensorRT {
+    background-color: green; /* Green color for real-time toggle off */
+}
+
+/* Active Real-Time Button Styling */
+#sensorRT.active {
+    background-color: red; /* Red color when real-time is active */
+}
+/*                      sensor date                       */

@@ -1,34 +1,77 @@
-<!-- <script src="{{ url_for('static', filename='js/sensor_log.js') }}"></script> -->
 <div>
-        <!-- Search Form -->
-        <div>
-            <h1>Action History</h1>
-            <div class="search-form">
-                <input type="text" id="deviceName" placeholder="Search by Device Name" oninput="filterLogs()">
-                <button type="button" onclick="searchLogs()">Search</button>
-                <select id="perPageSelect" class="select-logs-per-page" onchange="updatePerPage()">
-                    <option value="10">10 logs/page</option>
-                    <option value="15">15 logs/page</option>
-                    <option value="20">20 logs/page</option>
-                </select>
-            </div>
+    <!-- Action Logs Header and Controls -->
+    <h1>Action Logs</h1>
+    <div class="search-form">
+        <!-- Date Range Picker -->
+        <label for="actionStartDate">From</label>
+        <input type="date" id="actionStartDate" placeholder="Start Date">
+        <label for="actionEndDate">To</label>
+        <input type="date" id="actionEndDate" placeholder="End Date">
+        <button type="button" id="actionSortToggle" onclick="toggleActionSortOrder()">Latest</button>
+        <button type="button" id="actionRT" onclick="toggleActionRealTime()">Toggle RT</button>
+
+        <!-- General Search -->
+        <input type="text" id="actionTopicName" placeholder="Number of records">
+        <button type="button" onclick="queryActionFromDB()">Search</button>
+        <select id="actionLogsPerPageSelect" class="select-logs-per-page" onchange="changedActionLogPerPage()">
+            <option value="10">10 logs/page</option>
+            <option value="15">15 logs/page</option>
+            <option value="20">20 logs/page</option>
+        </select>
+    </div>
+
+    <div class="filter-container">
+        <div class="filter-box">
+            <label for="id-query-db-box">ID</label>
+            <input type="text" class="column-filter query-db-box" id="action-id-query-db-box" placeholder="Search ID">
         </div>
+        <div class="filter-box">
+            <label for="timestamp-query-db-box">Timestamp</label>
+            <input type="text" class="column-filter query-db-box" id="action-timestamp-query-db-box" placeholder="Search Timestamp">
+        </div>
+        <div class="filter-box">
+            <label for="topic-query-db-box">Topic</label>
+            <input type="text" class="column-filter query-db-box" id="action-topic-query-db-box" placeholder="Search Topic">
+        </div>
+        <div class="filter-box">
+            <label for="command-query-db-box">Command</label>
+            <input type="text" class="column-filter query-db-box" id="action-command-query-db-box" placeholder="Search Command">
+        </div>
+        <div class="filter-box">
+            <label for="status-query-db-box">Status</label>
+            <input type="text" class="column-filter query-db-box" id="action-status-query-db-box" placeholder="Search Status">
+        </div>
+    </div>
 
-        <table id="log-table">
-            <thead>
-                <tr>
-                    <th onclick="sortTable('Id')">ID</th>
-                    <th onclick="sortTable('Device')">timestamp</th>
-                    <th onclick="sortTable('Operation')">light level</th>
-                    <th onclick="sortTable('Status')">humidity</th>
-                    <th onclick="sortTable('Timestamp')">temperature</th>
-                </tr>
-            </thead>
-            <tbody id="hlogTableBody">
-                <!-- Nội dung bảng sẽ được thêm bởi JavaScript -->
-            </tbody>
-        </table>
+    <div id="actionPagination"></div>
 
-        <!-- Pagination -->
-        <div id="pagination"></div>
+    <table id="actionLogTable">
+        <thead>
+            <tr>
+                <th>ID 
+                    <button class="sort-btn" onclick="sortActionLogTable('id')">⏳</button>
+                    <input type="text" class="column-filter" id="action-filter-id" placeholder="Search ID" oninput="applyAllActionFilters()">
+                </th>
+                <th>Timestamp 
+                    <button class="sort-btn" onclick="sortActionLogTable('timestamp')">⏳</button>
+                    <input type="text" class="column-filter" id="action-filter-timestamp" placeholder="Search Timestamp" oninput="applyAllActionFilters()">
+                </th>
+                <th>Topic 
+                    <button class="sort-btn" onclick="sortActionLogTable('topic')">⏳</button>
+                    <input type="text" class="column-filter" id="action-filter-topic" placeholder="Search Topic" oninput="applyAllActionFilters()">
+                </th>
+                <th>Command 
+                    <button class="sort-btn" onclick="sortActionLogTable('command')">⏳</button>
+                    <input type="text" class="column-filter" id="action-filter-command" placeholder="Search Command" oninput="applyAllActionFilters()">
+                </th>
+                <th>Status 
+                    <button class="sort-btn" onclick="sortActionLogTable('status')">⏳</button>
+                    <input type="text" class="column-filter" id="action-filter-status" placeholder="Search Status" oninput="applyAllActionFilters()">
+                </th>
+            </tr>
+        </thead>
+        <tbody id="actionLogTableBody">
+            <!-- Content will be generated dynamically -->
+        </tbody>
+    </table>
 </div>

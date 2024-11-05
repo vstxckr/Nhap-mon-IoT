@@ -13,7 +13,8 @@ class Database:
                 database=database
             )
             if self.connection.is_connected():
-                print("Connected to MySQL database")
+                # print("Connected to MySQL database")
+                pass
         except Error as e:
             print(f"Error connecting to MySQL database: {e}")
             self.connection = None
@@ -119,34 +120,6 @@ class Database:
             print(f"Error fetching data: {e}")
             return []
 
-#     def close_connection(self):
-#         """Đóng kết nối database."""
-#         if self.connection and self.connection.is_connected():
-#             self.connection.close()
-#             print("Database connection closed.")
-
-# import mysql.connector
-# from mysql.connector import Error
-# import json
-# from datetime import datetime
-
-# class Database:
-    # def __init__(self, host="localhost", user="root", password="", database="manhdx"):
-    #     try:
-    #         self.connection = mysql.connector.connect(
-    #             host=host,
-    #             user=user,
-    #             password=password,
-    #             database=database
-    #         )
-    #         if self.connection.is_connected():
-    #             print("Connected to MySQL database")
-    #     except Error as e:
-    #         print(f"Error connecting to MySQL database: {e}")
-    #         self.connection = None
-
-    # Existing methods (e.g., insert_data, insert_device_history, etc.) go here
-
     def query_logs(self, table, start_date=None, end_date=None, filters={}, sort='latest', limit=100):
         """Query logs with specific filters, date range, sort order, and limit."""
         if not self.connection:
@@ -197,4 +170,4 @@ class Database:
         """Close the database connection."""
         if self.connection and self.connection.is_connected():
             self.connection.close()
-            print("Database connection closed.")
+            # print("Database connection closed.")

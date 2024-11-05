@@ -1,5 +1,4 @@
 # app/models/sensor.py
-
 import json
 import os
 

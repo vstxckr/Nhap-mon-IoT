@@ -55,15 +55,15 @@ fan_dbs = light_dbs = air_dbs = all_dbs = None
 
 # lấy dữ liệu từ bảng chartdata từ trong db và lưu vào file sensor_log.json
 with file_lock: 
-    with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "w") as f:
+    with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\project\\app\\data\\sensor_log.json", "w") as f:
         data = db.get_data("chartdata")
         if (len(data) > 0):
             json.dump(data, f, indent=4)
 
 # lấy giá trị thời gian cuối cùng để làm thời gian trước đó cho chương trình.
 with file_lock: 
-    if (Path("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json").exists()):
-        with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "r") as f:
+    if (Path("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\project\\app\\data\\sensor_log.json").exists()):
+        with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\project\\app\\data\\sensor_log.json", "r") as f:
             last_time = json.load(f)[-1]["timestamp"]
 
 
@@ -130,13 +130,13 @@ def handle_mqtt_message(client, userdata, msg):
             # mở file và ghi vào sensor_log
             with file_lock:
                 cache = db.get_data("chartdata")
-                with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log.json", "w") as f:
+                with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\project\\app\\data\\sensor_log.json", "w") as f:
                     json.dump(cache, f, indent=4)
             # khởi tạo lại last_time
             last_time = current_time
 
         rt_data = db.get_data("realtimedata", limit=200)
-        with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\app\\data\\sensor_log_realtime.json", "w") as f:
+        with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\project\\app\\data\\sensor_log_realtime.json", "w") as f:
             json.dump(rt_data, f, indent=4)
 
         # update sensor_data để emit lên socket

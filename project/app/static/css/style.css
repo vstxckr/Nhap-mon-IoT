@@ -904,3 +904,132 @@ button[type="button"]:hover {
     background-color: red; /* Red color when real-time is active */
 }
 /*                      sensor date                       */
+
+
+
+/*                      profile css                       */
+/* General container styling */
+.profile-container {
+    display: flex;
+    flex-direction: column; /* Stack each section vertically */
+    gap: 30px;
+    padding: 30px;
+    background-color: #f9f9f9;
+}
+
+/* Profile card styling */
+.profile-card, .account-info, .billing-info {
+    background-color: #faf7f0;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+/* Profile image styling */
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Header styling */
+.profile-info h2, .account-info h2, .billing-info h2 {
+    font-size: 24px;
+    color: #789e9e;
+    margin-bottom: 15px;
+}
+
+/* Paragraph and list styling */
+.profile-info p, .account-info p, .billing-info ul li {
+    color: #333; /* Darker text color for better contrast */
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Contact list styling: remove bullets and increase font size */
+.billing-info ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+}
+
+.billing-info ul li {
+    font-size: 18px;
+}
+
+/* Anchor tag styling */
+.billing-info a {
+    color: #4d90fe;
+    text-decoration: none;
+    font-size: 18px; /* Increase font size for links */
+}
+
+.billing-info a:hover {
+    text-decoration: underline;
+}
+
+/* Button styling */
+.account-button, .billing-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #789e9e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.account-button:hover, .billing-button:hover {
+    background-color: #56777a;
+}
+
+/*                      profile css                       */
+
+
+/*                      status action css                 */
+/* Topic Styles */
+.topic-fan {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+.topic-air {
+    background-color: #d4edda;
+    color: #155724;
+}
+.topic-light {
+    background-color: #fff3cd;
+    color: #856404;
+}
+.topic-all {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Command Styles */
+.command-on {
+    font-weight: bold;
+    color: #28a745;
+}
+.command-off {
+    font-weight: bold;
+    color: #dc3545;
+}
+
+/* Status Styles */
+.status-update {
+    background-color: #cce5ff;
+    color: #004085;
+}
+.status-failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.status-successfull {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/*                      status action css                 */

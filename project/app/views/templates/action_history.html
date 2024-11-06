@@ -3,9 +3,9 @@
     <h1>Action Logs</h1>
     <div class="search-form">
         <!-- Date Range Picker -->
-        <label for="actionStartDate">From</label>
+        <label for="actionStartDate"><b>From</b></label>
         <input type="date" id="actionStartDate" placeholder="Start Date">
-        <label for="actionEndDate">To</label>
+        <label for="actionEndDate"><b>To</b></label>
         <input type="date" id="actionEndDate" placeholder="End Date">
         <button type="button" id="actionSortToggle" onclick="toggleActionSortOrder()">Latest</button>
         <button type="button" id="actionRT" onclick="toggleActionRealTime()">Toggle RT</button>
@@ -20,31 +20,33 @@
         </select>
     </div>
 
+    <div><h3>Filter in Database</h3></div>
+
     <div class="filter-container">
         <div class="filter-box">
-            <label for="id-query-db-box">ID</label>
+            <label for="id-query-db-box"><b>ID</b></label>
             <input type="text" class="column-filter query-db-box" id="action-id-query-db-box" placeholder="Search ID">
         </div>
         <div class="filter-box">
-            <label for="timestamp-query-db-box">Timestamp</label>
+            <label for="timestamp-query-db-box"><b>Timestamp</b></label>
             <input type="text" class="column-filter query-db-box" id="action-timestamp-query-db-box" placeholder="Search Timestamp">
         </div>
         <div class="filter-box">
-            <label for="topic-query-db-box">Topic</label>
+            <label for="topic-query-db-box"><b>Topic</b></label>
             <input type="text" class="column-filter query-db-box" id="action-topic-query-db-box" placeholder="Search Topic">
         </div>
         <div class="filter-box">
-            <label for="command-query-db-box">Command</label>
+            <label for="command-query-db-box"><b>Command</b></label>
             <input type="text" class="column-filter query-db-box" id="action-command-query-db-box" placeholder="Search Command">
         </div>
         <div class="filter-box">
-            <label for="status-query-db-box">Status</label>
+            <label for="status-query-db-box"><b>Status</b></label>
             <input type="text" class="column-filter query-db-box" id="action-status-query-db-box" placeholder="Search Status">
         </div>
     </div>
 
     <div id="actionPagination"></div>
-
+    <div><button type="button" onclick="clearActionFilter()">clear filter</button></div>
     <table id="actionLogTable">
         <thead>
             <tr>

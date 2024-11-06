@@ -10,32 +10,9 @@ let queryActionSortOrder = 'lastest'
 function toggleActionSortOrder() {
     const sortToggleButton = document.getElementById("actionSortToggle");
     queryActionSortOrder = queryActionSortOrder === 'lastest' ? 'oldest' : 'lastest';
-    // sortToggleButton.textContent = queryActionSortOrder === 'desc' ? "Latest" : "Oldest";
-        sortToggleButton.textContent = queryActionSortOrder.charAt(0).toUpperCase() + queryActionSortOrder.slice(1);
-    // actionLogs = sortActionLogs(actionLogs);  // Re-sort logs after toggling
-    // renderFilteredActionLogTable(actionLogs);  // Update the table display
-    // renderFilteredActionPagination(actionLogs);  // Update pagination
+    sortToggleButton.textContent = queryActionSortOrder.charAt(0).toUpperCase() + queryActionSortOrder.slice(1);
 }
 
-// Toggle real-time mode for action logs
-// function toggleActionRealTime() {
-//     const actionRTButton = document.getElementById("actionRT");
-//     actionRealTime = actionRealTime === 1 ? 0 : 1;
-//     actionRTButton.style.backgroundColor = actionRealTime ? "green" : "red";
-//     actionRTButton.textContent = actionRealTime ? "Real-Time: ON" : "Real-Time: OFF";
-
-//     if (!actionRealTime) {
-//         // Clear date and query filters if real-time mode is OFF
-//         document.getElementById('actionStartDate').value = '';
-//         document.getElementById('actionEndDate').value = '';
-//         document.getElementById('action-id-query-db-box').value = '';
-//         document.getElementById('action-timestamp-query-db-box').value = '';
-//         document.getElementById('action-topic-query-db-box').value = '';
-//         document.getElementById('action-command-query-db-box').value = '';
-//         document.getElementById('action-status-query-db-box').value = '';
-//         applyAllActionFilters();  // Re-apply filters to update the display
-//     }
-// }
 
 // Fetch action logs from the API
 function fetchActionLogs() {
@@ -99,17 +76,35 @@ function renderFilteredActionLogTable(filteredLogs) {
     const start = (currentActionLogPage - 1) * actionLogsPerPage;
     const end = start + actionLogsPerPage;
     const paginatedLogs = filteredLogs.slice(start, end);
-
+    /* new */
     paginatedLogs.forEach(log => {
+        // Determine classes based on topic, command, and status values
+        const topicClass = log.topic ? `topic-${log.topic.toLowerCase()}` : '';
+        const commandClass = log.command ? `command-${log.command.toLowerCase()}` : '';
+        const statusClass = log.status ? `status-${log.status.toLowerCase()}` : '';
+
+        // Construct row with dynamic classes
         const row = `<tr>
             <td>${log.id}</td>
             <td>${log.timestamp || "N/A"}</td>
-            <td>${log.topic || "N/A"}</td>
-            <td>${log.command || "N/A"}</td>
-            <td>${log.status || "N/A"}</td>
+            <td class="${topicClass}">${log.topic || "N/A"}</td>
+            <td class="${commandClass}">${log.command || "N/A"}</td>
+            <td class="${statusClass}">${log.status || "N/A"}</td>
         </tr>`;
         tableBody.innerHTML += row;
     });
+    /* new */
+
+    // paginatedLogs.forEach(log => {
+    //     const row = `<tr>
+    //         <td>${log.id}</td>
+    //         <td>${log.timestamp || "N/A"}</td>
+    //         <td>${log.topic || "N/A"}</td>
+    //         <td>${log.command || "N/A"}</td>
+    //         <td>${log.status || "N/A"}</td>
+    //     </tr>`;
+    //     tableBody.innerHTML += row;
+    // });
 }
 
 // Render pagination controls for action logs
@@ -248,4 +243,15 @@ function queryActionFromDB() {
         renderFilteredActionPagination(data);  // Render pagination for the action logs
     })
     .catch(error => console.error("Error querying action data:", error));
+}
+
+function clearActionFilter() {
+        document.getElementById('action-filter-id').value = '';
+        document.getElementById('action-filter-timestamp').value = '';
+        document.getElementById('action-filter-topic').value = '';
+        document.getElementById('action-filter-command').value = '';
+        document.getElementById('action-filter-status').value = '';
+        
+        actionLogs = sortActionLogs(actionLogs);  // Sort fetched data
+        applyAllActionFilters(actionLogs)
 }

@@ -27,7 +27,7 @@ print('Connected to WiFi')
 print('Network config:', station.ifconfig())
 
 # MQTT_SERVER = "192.168.0.52"
-MQTT_SERVER = "192.168.1.2"
+MQTT_SERVER = "192.168.1.4"
 #MQTT_SERVER = "172.20.10.10"
 MQTT_PORT = 8668
 CLIENT_ID = 'ManhDX_esp8266'
@@ -82,6 +82,7 @@ def on_message(topic, msg):
         elif msg == b'OFF':
             Light_bulb.value(0) 
             print('Light is OFF')
+        client.publish('check/light', str("yes"))
     elif topic == b'home/fan':
         if msg == b'ON':
             Fan.value(1)  
@@ -89,6 +90,7 @@ def on_message(topic, msg):
         elif msg == b'OFF':
             Fan.value(0)  
             print('Fan is OFF')
+        client.publish('check/fan', str("yes"))
     elif topic == b'home/aircondition':
         if msg == b'ON':
             Air_Condition.value(1)  
@@ -96,6 +98,7 @@ def on_message(topic, msg):
         elif msg == b'OFF':
             Air_Condition.value(0)  
             print('Air Condition is OFF')
+        client.publish('check/air', str("yes"))
     elif topic == b'home/all':
         if msg == b'ON':
             Fan.value(1)
@@ -105,6 +108,7 @@ def on_message(topic, msg):
             Fan.value(0)
             Light_bulb.value(0)
             Air_Condition.value(0)
+        client.publish('check/all', str("yes"))
 
 def random1(a, b):
     return a + random.getrandbits(7) % (b - a + 1)
@@ -151,17 +155,17 @@ while True:
     try:
 
         # Read data from DHT22
-        # dht_sensor.measure()
-        # temperature = dht_sensor.temperature()
-        # humidity = dht_sensor.humidity()
+        dht_sensor.measure()
+        temperature = dht_sensor.temperature()
+        humidity = dht_sensor.humidity()
 # 
         # Read data from CDS-NVZ1 (LDR)
-        #light_level = light_sensor.read()  # Analog output (0-1023)
+        light_level = light_sensor.read()  # Analog output (0-1023)
 
         # Publish the sensor data
-        temperature =  random1(20, 25)
-        humidity =  random1(70,75)
-        light_level =  random1(100, 150)
+        # temperature =  random1(20, 25)
+        # humidity =  random1(70,75)
+        # light_level =  random1(100, 150)
         publish_data(temperature, humidity, light_level)
         # Wait for MQTT messages to control the light
         client.check_msg()

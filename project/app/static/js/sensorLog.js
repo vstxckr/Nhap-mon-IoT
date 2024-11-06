@@ -247,111 +247,12 @@ function querySensorFromDB() {
     .catch(error => console.error("Error querying sensor data:", error));
 }
 
-// Render pagination for filtered results
-// function renderFilteredSensorPagination(filteredLogs) {
-//     const pagination = document.getElementById('sensorPagination');
-//     pagination.innerHTML = '';  // Clear previous pagination controls
-
-//     const totalPages = Math.ceil(filteredLogs.length / sensorLogsPerPage);
-//     for (let i = 1; i <= totalPages; i++) {
-//         const pageLink = document.createElement('button');
-//         pageLink.classList.add('page-link');
-//         pageLink.textContent = i;
-
-//         if (i === currentSensorLogPage) {
-//             pageLink.classList.add('active');
-//         }
-
-//         pageLink.addEventListener('click', function () {
-//             currentSensorLogPage = i;
-//             renderFilteredSensorLogTable(filteredLogs);
-//         });
-//         pagination.appendChild(pageLink);
-//     }
-// }
-// function renderFilteredSensorPagination(filteredLogs) {
-//     const pagination = document.getElementById('sensorPagination');
-//     pagination.innerHTML = '';  // Clear previous pagination controls
-
-//     const totalPages = Math.ceil(filteredLogs.length / sensorLogsPerPage);
-
-//     for (let i = 1; i <= totalPages; i++) {
-//         const pageLink = document.createElement('button');
-//         pageLink.classList.add('page-link');
-//         pageLink.textContent = i;
-
-//         // Highlight the current page with the 'active' class
-//         if (i === currentSensorLogPage) {
-//             pageLink.classList.add('active');
-//         }
-
-//         // Add event listener to handle page change
-//         pageLink.addEventListener('click', function () {
-//             currentSensorLogPage = i;
-            
-//             // // Render the table and pagination based on the new page
-//             renderFilteredSensorLogTable(filteredLogs);
-//             // renderFilteredSensorPagination(filteredLogs);  // Re-render to update active page
-
-//             // Update the active class after rendering
-//             const pageLinks = pagination.querySelectorAll('.page-link');
-//             pageLinks.forEach((link) => link.classList.remove('active'));
-//             pageLink.classList.add('active');
-//         });
-
-//         pagination.appendChild(pageLink);
-//     }
-// }
-
-// Render the sensor logs table with pagination
-// function renderSensorLogTable() {
-//     const tableBody = document.getElementById('sensorLogTableBody');
-//     tableBody.innerHTML = '';  // Clear existing table rows
-
-//     const start = (currentSensorLogPage - 1) * sensorLogsPerPage;
-//     const end = start + sensorLogsPerPage;
-//     const paginatedLogs = sensorLogs.slice(start, end);
-
-//     paginatedLogs.forEach(log => {
-//         const row = `<tr>
-//             <td>${log.id}</td>
-//             <td>${log.timestamp || "N/A"}</td>
-//             <td>${log.light_level || "N/A"}</td>
-//             <td>${log.humidity || "N/A"}</td>
-//             <td>${log.temperature || "N/A"}</td>
-//         </tr>`;
-//         tableBody.innerHTML += row;
-//     });
-// }
-
-
-// Render pagination controls for sensor logs
-// function renderSensorPagination() {
-//     const pagination = document.getElementById('sensorPagination');
-//     pagination.innerHTML = '';  // Clear previous pagination controls
-
-//     const totalPages = Math.ceil(sensorLogs.length / sensorLogsPerPage);
-//     for (let i = 1; i <= totalPages; i++) {
-//         const pageLink = document.createElement('button');
-//         pageLink.classList.add('page-link');
-//         pageLink.textContent = i;
-
-//         if (i === currentSensorLogPage) {
-//             pageLink.classList.add('active');
-//         }
-
-//         pageLink.addEventListener('click', function () {
-//             currentSensorLogPage = i;
-//             renderSensorLogTable();
-//             renderSensorPagination(); // Update pagination to show active page
-//         });
-//         pagination.appendChild(pageLink);
-//     }
-// }
-
-// Update the number of logs displayed per page and reapply all filters
-// function updateSensorLogsPerPage() {
-//     sensorLogsPerPage = parseInt(document.getElementById('sensorLogsPerPageSelect').value);
-//     currentSensorLogPage = 1;  // Reset to the first page
-//     applyAllFilters();  // Apply all current filters
-// }
+function clearSensorFilter() {
+    document.getElementById('sensor-filter-id').value = '';
+    document.getElementById('sensor-filter-timestamp').value = '';
+    document.getElementById('sensor-filter-light-level').value = '';
+    document.getElementById('sensor-filter-humidity').value = '';
+    document.getElementById('sensor-filter-temperature').value = '';
+    sensorLogs = sortSensorLogs(sensorLogs);  // Sort the sensor logs based on the selected field and order
+    applyAllFilters(sensorLogs)
+}

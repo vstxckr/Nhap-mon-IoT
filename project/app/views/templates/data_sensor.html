@@ -6,9 +6,9 @@
     <div>
         <div class="search-form">
             <!-- Date Range Picker -->
-            <label for="sensorStartDate">From</label>
+            <label for="sensorStartDate"><b>From</b></label>
             <input type="date" id="sensorStartDate" placeholder="Start Date">
-            <label for="sensorEndDate">To</label>
+            <label for="sensorEndDate"><b>To</b></label>
             <input type="date" id="sensorEndDate" placeholder="End Date">
             <button type="button" id="sortToggle" onclick="toggleSensorSortOrder()">Latest</button>
             <button type="button" id="sensorRT" onclick="toggleSensorRealTime()">Toggle RT</button>
@@ -23,30 +23,34 @@
             </select>
         </div>
     </div>
+
+    <div><h3>Filter in Database</h3></div>
+
     <div class="filter-container">
         <div class="filter-box">
-            <label for="id-query-db-box">ID</label>
+            <label for="id-query-db-box"><b>ID</b></label>
             <input type="text" class="column-filter query-db-box" id="id-query-db-box" placeholder="Search ID">
         </div>
         <div class="filter-box">
-            <label for="timestamp-query-db-box">Timestamp</label>
+            <label for="timestamp-query-db-box"><b>Timestamp</b></label>
             <input type="text" class="column-filter query-db-box" id="timestamp-query-db-box" placeholder="Search Timestamp">
         </div>
         <div class="filter-box">
-            <label for="light-level-query-db-box">Light Level</label>
+            <label for="light-level-query-db-box"><b>Light Level</b></label>
             <input type="text" class="column-filter query-db-box" id="light-level-query-db-box" placeholder="Search Light Level">
         </div>
         <div class="filter-box">
-            <label for="temperature-query-db-box">Humidity</label>
+            <label for="temperature-query-db-box"><b>Humidity</b></label>
             <input type="text" class="column-filter query-db-box" id="humidity-query-db-box" placeholder="Search Humidity">
         </div>
         <div class="filter-box">
-            <label for="temperature-query-db-box">Temperature</label>
+            <label for="temperature-query-db-box"><b>Temperature</b></label>
             <input type="text" class="column-filter query-db-box" id="temperature-query-db-box" placeholder="Search Temperature">
         </div>
     </div>
 
     <div id="sensorPagination"></div>
+    <div><button type="button" onclick="clearSensorFilter()">clear filter</button></div>
 
     <table id="sensorLogTable">
         <thead>

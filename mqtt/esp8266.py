@@ -114,7 +114,7 @@ def random1(a, b):
     return a + random.getrandbits(7) % (b - a + 1)
 
 # Publish sensor data
-def publish_data(temperature, humidity, light_level):
+def publish_data(temperature, humidity, light_level, wind_speed):
     try:
         if (Fan.value() == 1 and Light_bulb.value() == 1 and Air_Condition.value() == 1):
             all_dev = 1
@@ -124,6 +124,7 @@ def publish_data(temperature, humidity, light_level):
             "temperature": temperature,
             "humidity": humidity,
             "light_level": light_level,
+            "wind_speed": wind_speed,
             "fan": Fan.value(),
             "light": Light_bulb.value(),
             "air": Air_Condition.value(),
@@ -166,7 +167,8 @@ while True:
         # temperature =  random1(20, 25)
         # humidity =  random1(70,75)
         # light_level =  random1(100, 150)
-        publish_data(temperature, humidity, light_level)
+        wind_speed = random1(50, 150)
+        publish_data(temperature, humidity, light_level, wind_speed)
         # Wait for MQTT messages to control the light
         client.check_msg()
 

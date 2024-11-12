@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (typeof satisfactionChart !== 'undefined') {
         loadChart()
     }
+    if (typeof sastifactionChart2 !== 'undefined') {
+        createChart2()
+    }
     fetch('/api/v1/sensor/pulldata')
     .then(response => response.text()) // Đọc file như một chuỗi text
     .then(data => {

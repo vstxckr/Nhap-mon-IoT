@@ -6,8 +6,10 @@ from app.controllers.mqtt_handler import init_mqtt_socketio, sensor_data  # Impo
 from .get_sensor_data import handle_get_sensor_data
 from .get_device_status import handle_get_device_status
 from .control_device import handle_control_device 
+from .wind_speed import get_wind_speed
 # from .query_sensor_data import handle_query_sensor_data 
 from app.models.database import Database
+
 
 # Khởi tạo SocketIO
 main_controller = Blueprint('main_controller', __name__)
@@ -15,6 +17,12 @@ main_controller = Blueprint('main_controller', __name__)
 @main_controller.route('/api/v1/sensor/pulldata', methods=['GET'])
 def get_sensor_data():
     """API để lấy dữ liệu cảm biến gần nhất."""
+    #      ---------------  bai 5 ------------                  #
+    sync = request.args.get('wind_speed')
+    # print(sync)
+    if (sync != None):
+        return get_wind_speed(request.args.get('thres'))
+    #      ---------------  bai 5 ------------                  #
     isrt = request.args.get('realtime')
     isrv = request.args.get('reverse')
     if (isrt == None):
@@ -41,6 +49,17 @@ def query_sensor_data():
     db = Database()
     data = request.json
     log_type = data.get('type', 'sensorLog')  # Default to 'sensorLog' if type is not provided
+
+
+
+    #      ---------------  bai 5 ------------                  #
+    if (log_type == 'statistic'):
+        logs = db.count_wind_speed_above(data.get('thres'))
+        return jsonify(logs) 
+    #      ---------------  bai 5 ------------                  #
+
+
+
     start_date = data.get('startDate')
     end_date = data.get('endDate')
     sort = data.get('sort', 'latest')
@@ -84,3 +103,9 @@ def action_history():
 @main_controller.route('/profile')
 def profile():
     return render_template('profile.html')
+
+#      ---------------  bai 5 ------------                  #
+@main_controller.route('/bai5')
+def bai5():
+    return render_template('bai5.html')
+#      ---------------  bai 5 ------------                  #

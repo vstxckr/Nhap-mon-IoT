@@ -1,0 +1,7 @@
+USE manhdx;
+
+CREATE TABLE bai5 (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    wind_speed FLOAT
+);

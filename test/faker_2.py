@@ -15,7 +15,8 @@ fields = {
     "temperature": random.randint(20, 30),
     "humidity": random.randint(70, 90),
     "light_level": random.randint(50, 150),
-    "time": "",
+    "wind_speed": random.randint(50, 150),
+    "timestamp": "",
     "light": 0,
     "fan": 0,
     "air": 0,
@@ -105,11 +106,12 @@ def subscribe_to_topic(topic):
 def periodic_publisher():
     while True:
         # Update the time field
-        fields["time"] = time.strftime("%H:%M:%S %m-%d-%Y", time.localtime())
+        fields["timestamp"] = time.strftime("%H:%M:%S %m-%d-%Y", time.localtime())
         # Update random values for temperature, humidity, and light_level
         fields["temperature"] = random.randint(20, 30)
         fields["humidity"] = random.randint(70, 90)
         fields["light_level"] = random.randint(50, 150)
+        fields["wind_speed"] = random.randint(50, 150)
         
         # Publish updated data
         publish_data()

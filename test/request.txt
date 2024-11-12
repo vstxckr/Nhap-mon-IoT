@@ -1,0 +1,234 @@
+/api/v1/sensor/pulldata [GET]
+
+2 đối số:
+realtime=0
+trả về dữ liệu dưới dạng mảng đối tượng json, mỗi đối tượng có id, timestamp (mỗi phút), và giá trị trung bình light_level, humidity, temperature ứng với phút đó.
+[
+    {
+        "id": 2531,
+        "timestamp": "2024-11-05 21:14",
+        "light_level": 90.5,
+        "humidity": 80.3,
+        "temperature": 25.8
+    },
+    {
+        "id": 2532,
+        "timestamp": "2024-11-05 21:15",
+        "light_level": 105.4,
+        "humidity": 79.0,
+        "temperature": 23.87
+    },
+    {
+        "id": 2533,
+        "timestamp": "2024-11-05 21:16",
+        "light_level": 84.11,
+        "humidity": 83.0,
+        "temperature": 22.44
+    },
+    {
+        "id": 2534,
+        "timestamp": "2024-11-05 21:17",
+        "light_level": 94.79,
+        "humidity": 80.93,
+        "temperature": 25.5
+    }
+]
+
+realtime=1
+trả về dữ liệu duới dạng thời gian thực (tính theo giây), mỗi giá trị của cảm biến ứng với giây đó
+[
+    {
+        "id": 37650,
+        "timestamp": "2024-11-05 22:39:09",
+        "light_level": 95.0,
+        "humidity": 72.0,
+        "temperature": 25.0
+    },
+    {
+        "id": 37651,
+        "timestamp": "2024-11-05 22:39:13",
+        "light_level": 124.0,
+        "humidity": 80.0,
+        "temperature": 29.0
+    },
+    {
+        "id": 37652,
+        "timestamp": "2024-11-05 22:39:17",
+        "light_level": 137.0,
+        "humidity": 86.0,
+        "temperature": 30.0
+    },
+    {
+        "id": 37653,
+        "timestamp": "2024-11-05 22:39:21",
+        "light_level": 145.0,
+        "humidity": 84.0,
+        "temperature": 23.0
+    },
+    {
+        "id": 37654,
+        "timestamp": "2024-11-05 22:39:25",
+        "light_level": 94.0,
+        "humidity": 89.0,
+        "temperature": 24.0
+    }
+]
+
+reverse=0
+thuộc tính xem theo chiều xuôi (thời gian tăng dần)
+[
+  {
+    "id": 37740,
+    "timestamp": "2024-11-05 22:45:16",
+    "light_level": 57,
+    "humidity": 72,
+    "temperature": 27
+  },
+  {
+    "id": 37741,
+    "timestamp": "2024-11-05 22:45:20",
+    "light_level": 111,
+    "humidity": 77,
+    "temperature": 20
+  },
+  {
+    "id": 37742,
+    "timestamp": "2024-11-05 22:45:24",
+    "light_level": 56,
+    "humidity": 81,
+    "temperature": 26
+  },
+  {
+    "id": 37743,
+    "timestamp": "2024-11-05 22:45:28",
+    "light_level": 51,
+    "humidity": 83,
+    "temperature": 20
+  }
+]
+reverse=1 
+thuộc tính xem theo chiều ngược (thời gian giảm dần)
+[
+  {
+    "humidity": 76,
+    "id": 37917,
+    "light_level": 74,
+    "temperature": 23,
+    "timestamp": "2024-11-05 22:57:15"
+  },
+  {
+    "humidity": 90,
+    "id": 37916,
+    "light_level": 128,
+    "temperature": 25,
+    "timestamp": "2024-11-05 22:57:11"
+  },
+  {
+    "humidity": 88,
+    "id": 37915,
+    "light_level": 78,
+    "temperature": 27,
+    "timestamp": "2024-11-05 22:57:07"
+  },
+  {
+    "humidity": 85,
+    "id": 37914,
+    "light_level": 88,
+    "temperature": 28,
+    "timestamp": "2024-11-05 22:57:03"
+  }
+
+/api/v1/device/status [GET]
+không có đối số
+lấy dữ liệu từ database về các thao tác bật tắt thiết bị của người dùng
+[
+  {
+    "command": "OFF",
+    "id": 266,
+    "status": "Successfull",
+    "timestamp": "2024-11-05 20:55:30",
+    "topic": "AIR"
+  },
+  {
+    "command": "OFF",
+    "id": 265,
+    "status": "Successfull",
+    "timestamp": "2024-11-05 20:55:26",
+    "topic": "LIGHT"
+  },
+  {
+    "command": "OFF",
+    "id": 264,
+    "status": "Successfull",
+    "timestamp": "2024-11-05 20:55:26",
+    "topic": "FAN"
+  },
+  {
+    "command": "ON",
+    "id": 263,
+    "status": "Successfull",
+    "timestamp": "2024-11-05 20:54:50",
+    "topic": "AIR"
+  }
+]
+
+/api/v1/device/control [POST]
+
+nhận đối số cmd có thể là:
+'all on' hoặc 'all off'
+'fan on' hoặc 'fan off'
+'light on' hoặc 'light off'
+'air on' hoặc 'air off'
+
+request ví dụ:
+
+{
+	cmd: 'all on'
+}
+
+response:
+{
+	command: 'all on',
+	status: 'success'
+}
+
+/api/v1/log/query [POST]
+
+api này sử dụng để truy vấn dữ liệu từ 2 bảng actionhistory và realtimedata
+các đối số:
++ type: 'sensorLog' hoặc 'actionLog'
++ startDate: 'YYYY-MM-DD'
++ endDate: 'YYYY-MM-DD'
++ sort: 'lastest' hoặc 'oldest'
++ numberOfRecords: số nguyên
++ filters: đối tượng json gồm: id, timestamp, light_level, humidity, temperature
+trả về:
+mảng đối tượng json tương ứng với truy vấn từ database
+
+ví dụ:
+request:
+{
+	type: 'sensorLog',
+	startDate:'2024-11-01',
+	endDate: '2024-11-05',
+	sort: 'latest',
+	numberOfRecords: 100,
+	filters: {
+		humidity: '',
+		id: '25007',
+		light_level: '77',
+		temperature: '',
+		timestamp: '23:'
+	}
+}
+
+response:
+[
+{
+	humidity: 86,
+	id: 25007,
+	light_level: 77,
+	temperature: 23,
+	timestamp: "2024-11-04 23:56:51",
+}
+]

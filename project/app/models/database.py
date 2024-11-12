@@ -19,6 +19,22 @@ class Database:
             print(f"Error connecting to MySQL database: {e}")
             self.connection = None
 
+    def insert_wind_speed(self, timestamp, wind_speed):
+        """Chèn dữ liệu tốc độ gió vào bảng bai5."""
+        if not self.connection:
+            print("Not connected to database.")
+            return
+        try:
+            cursor = self.connection.cursor()
+            query = """
+            INSERT INTO bai5 (timestamp, wind_speed)
+            VALUES (%s, %s)
+            """
+            cursor.execute(query, (timestamp, wind_speed))
+            self.connection.commit()
+        except Error as e:
+            print(f"Error inserting wind speed data: {e}")
+
     def insert_data(self, table, timestamp, light_level, humidity, temperature):
         """Chèn dữ liệu cảm biến vào bảng chỉ định."""
         if not self.connection:
@@ -162,6 +178,7 @@ class Database:
         """Query device action history with filters, date range, sort order, and limit."""
         return self.query_logs('actionhistory', start_date, end_date, filters, sort, limit)
 
+
     def convert_to_json(self, data):
         """Convert MySQL data result to JSON format."""
         return json.dumps(data, default=str)
@@ -171,3 +188,18 @@ class Database:
         if self.connection and self.connection.is_connected():
             self.connection.close()
             # print("Database connection closed.")
+# bai 5
+    def count_wind_speed_above(self, speed_threshold):
+        """Đếm số bản ghi có wind_speed lớn hơn giá trị speed_threshold."""
+        if not self.connection:
+            print("Not connected to database.")
+            return 0
+        try:
+            cursor = self.connection.cursor()
+            query = "SELECT COUNT(*) FROM bai5 WHERE wind_speed > %s"
+            cursor.execute(query, (speed_threshold,))
+            count = cursor.fetchone()[0]
+            return count
+        except Error as e:
+            print(f"Error counting wind speed records: {e}")
+            return 0

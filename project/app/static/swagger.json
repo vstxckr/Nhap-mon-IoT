@@ -17,7 +17,7 @@
           {
             "name": "realtime",
             "in": "query",
-            "required": true,
+            "required": false,
             "type": "integer",
             "enum": [0, 1],
             "description": "0 for minute-based data, 1 for real-time (second-based) data"

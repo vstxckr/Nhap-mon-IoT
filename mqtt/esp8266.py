@@ -7,10 +7,10 @@ import dht
 from machine import Pin, ADC
 # ssid = "BlueCyber"
 # password = "Tu@n201088"
-ssid = 'HieuManh'
-password = '19992912'
-# ssid = "ManhDX"
-# password = "09090909"
+# ssid = 'HieuManh'
+# password = '19992912'
+ssid = "Yesyes"
+password = "09090909"
 # ssid = "Haind"
 # password = "zzzzzzzz"
 # Connect to Wi-Fi
@@ -27,7 +27,7 @@ print('Connected to WiFi')
 print('Network config:', station.ifconfig())
 
 # MQTT_SERVER = "192.168.0.52"
-MQTT_SERVER = "192.168.1.4"
+MQTT_SERVER = "172.20.10.8"
 #MQTT_SERVER = "172.20.10.10"
 MQTT_PORT = 8668
 CLIENT_ID = 'ManhDX_esp8266'

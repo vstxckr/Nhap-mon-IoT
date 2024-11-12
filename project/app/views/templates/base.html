@@ -10,9 +10,11 @@
 </head>
 <body>
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='js/loadPage.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bai5.js') }}"></script>
     <script src="{{ url_for('static', filename='js/actionLog.js') }}"></script>
     <script src="{{ url_for('static', filename='js/sensorLog.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -28,6 +30,7 @@
             <div class="menu-box"><a href="#" data-page="data_sensor" class="menu-item">Data Sensor</a></div>
             <div class="menu-box"><a href="#" data-page="action_history" class="menu-item">Action History</a></div>
             <div class="menu-box"><a href="#" data-page="profile" class="menu-item">Profile</a></div>
+            <div class="menu-box"><a href="#" data-page="bai5" class="menu-item">Bai5</a></div>
         </div>
         <div class="main-content">
             <div id="home-content" class="content-section" style="display: none;">
@@ -37,6 +40,8 @@
             <div id="action_history-content" class="content-section" style="display: none;">
             </div>
             <div id="profile-content" class="content-section" style="display: none;">
+            </div>
+            <div id="bai5-content" class="content-section" style="display: none;">
             </div>
         </div>
     </div>

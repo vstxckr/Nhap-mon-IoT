@@ -4,7 +4,9 @@ var current = 1;
 // Generate time labels for a full day (every hour)
 let satisfactionCtx 
 let satisfactionChart 
-let global_data = {fan: 0, light: 0, air: 0, all: 0};
+let satisfactionCtx2
+let satisfactionChart2
+let global_data = {fan: 0, light: 0, air: 0, all: 0, wind: 0};
 let isEventListenerAttached = false;  // Cờ để kiểm tra xem sự kiện đã được gắn chưa
 
 
@@ -17,6 +19,7 @@ socket.on('sensor_data', function (data) {
     global_data.light = data.light
     global_data.air = data.air
     global_data.all = data.all
+    global_data.wind = data.wind_speed
 
     if (actionrealtime == 0) {
         fetchActionLogs()
@@ -67,6 +70,21 @@ socket.on('sensor_data', function (data) {
 
     updateBoxColors(data.light_level, data.humidity, data.temperature);
 
+    /* ---------------------update bai5------------------------  */
+    document.getElementById('wind-sensor').textContent = data.wind_speed;
+    // Cập nhật lại biểu đồ sau khi thêm dữ liệu từ file JSON
+    satisfactionChart2.data.datasets[0].data.push(global_data.wind)
+    satisfactionChart2.data.labels.push(data.timestamp)
+    if (satisfactionChart2.data.datasets[0].data.length > 20) {
+        satisfactionChart2.data.datasets[0].data.shift()
+        satisfactionChart2.data.labels.shift()
+    }
+    else {
+    }
+    satisfactionChart2.update()
+
+    /* ---------------------update bai5------------------------  */
+
     // Xóa giá trị cũ nhất nếu vượt quá số lượng cần thiết (chỉ giữ 25 giá trị)
     fetch('/api/v1/sensor/pulldata')
     .then(response => response.text()) // Đọc file như một chuỗi text
@@ -99,6 +117,7 @@ socket.on('sensor_data', function (data) {
             }
             console.log('updated')
             satisfactionChart.update();
+
         }
 
     })

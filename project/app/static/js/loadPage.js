@@ -16,7 +16,7 @@ function loadPage(page, className) {
 
 
 function loadAllPages() {
-    const pages = ['home', 'data_sensor', 'action_history', 'profile']; // Danh sách các trang cần tải
+    const pages = ['home', 'data_sensor', 'action_history', 'profile', 'bai5']; // Danh sách các trang cần tải
 
     pages.forEach(page => {
         // Tạo đường dẫn đến file HTML
@@ -38,6 +38,10 @@ function loadAllPages() {
                     if (page === 'home') {
                         createChart()
                         loadChart()
+                    }
+                    if (page === 'bai5') {
+                        createChart2()
+                        loadChart2()
                     }
                 } else {
                     console.error(`Element with class ${page} not found.`);

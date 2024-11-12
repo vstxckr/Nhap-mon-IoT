@@ -103,6 +103,7 @@ def handle_mqtt_message(client, userdata, msg):
 
         # insert data vào bảng realtimedata
         db.insert_data("realtimedata", current_time_m, cur_light, cur_humid, cur_temp)
+        db.insert_wind_speed(current_time_m, temp.get("wind_speed"))
 
         # nếu thời gian theo phút thay đổi
         if last_time != current_time:
@@ -179,6 +180,17 @@ def handle_mqtt_message(client, userdata, msg):
         # print(f'chk_air = {chk_air}, val_air = {val_air}, real = {temp.get('air')}')
         # print(f'chk_light = {chk_light}, val_light = {val_light}, real = {temp.get('light')}')
         # print(f'chk_all = {chk_all}, val_all = {val_all}, real = {temp.get('all')}')
+        if (temp.get('all') == 1 and chk_all == False):
+            val_all = True
+        elif (temp.get('all') == 0 and chk_all == False):
+            val_all = False
+        if (temp.get('light') == 1 and chk_light == False):
+            val_light = True
+        if (temp.get('air') == 1 and chk_air == False):
+            val_air = True
+        if (temp.get('fan') == 1 and chk_fan == False):
+            val_fan = True
+            
 
         if (chk_fan == True):
             cnt_fan += 1

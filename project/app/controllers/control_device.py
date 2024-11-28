@@ -22,6 +22,18 @@ def handle_control_device(command):
         topic = topic_air
     elif ('all' in a[0]):
         topic = topic_all
+    elif ('alert' in a[0]):
+        subprocess.run([
+            "mosquitto_pub",
+            "-h", "localhost",
+            "-t", "home/alert",
+            "-m", "ON",
+            "-u", "ManhDX",
+            "-P", "B21DCAT124",
+            "-p", "8668"
+        ])
+        # print("publish data: %s" % command)
+        return jsonify(result)
     else:
         print("invalid!")
         pass 

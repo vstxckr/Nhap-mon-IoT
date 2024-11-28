@@ -1,467 +1,5 @@
 [
     {
-        "id": 3558,
-        "timestamp": "2024-11-12 23:41",
-        "light_level": 101.29,
-        "humidity": 78.64,
-        "temperature": 25.36
-    },
-    {
-        "id": 3559,
-        "timestamp": "2024-11-12 23:42",
-        "light_level": 113.2,
-        "humidity": 79.47,
-        "temperature": 25.6
-    },
-    {
-        "id": 3560,
-        "timestamp": "2024-11-12 23:43",
-        "light_level": 103.47,
-        "humidity": 80.87,
-        "temperature": 25.47
-    },
-    {
-        "id": 3561,
-        "timestamp": "2024-11-12 23:44",
-        "light_level": 107.93,
-        "humidity": 80.67,
-        "temperature": 25.33
-    },
-    {
-        "id": 3562,
-        "timestamp": "2024-11-12 23:45",
-        "light_level": 93.4,
-        "humidity": 79.87,
-        "temperature": 24.27
-    },
-    {
-        "id": 3563,
-        "timestamp": "2024-11-12 23:46",
-        "light_level": 105.47,
-        "humidity": 79.33,
-        "temperature": 23.6
-    },
-    {
-        "id": 3564,
-        "timestamp": "2024-11-12 23:47",
-        "light_level": 105.86,
-        "humidity": 77.93,
-        "temperature": 24.93
-    },
-    {
-        "id": 3565,
-        "timestamp": "2024-11-12 23:48",
-        "light_level": 106.07,
-        "humidity": 81.67,
-        "temperature": 25.0
-    },
-    {
-        "id": 3566,
-        "timestamp": "2024-11-12 23:49",
-        "light_level": 104.47,
-        "humidity": 81.27,
-        "temperature": 26.67
-    },
-    {
-        "id": 3567,
-        "timestamp": "2024-11-12 23:50",
-        "light_level": 102.87,
-        "humidity": 78.6,
-        "temperature": 25.4
-    },
-    {
-        "id": 3568,
-        "timestamp": "2024-11-12 23:51",
-        "light_level": 97.93,
-        "humidity": 80.67,
-        "temperature": 25.53
-    },
-    {
-        "id": 3569,
-        "timestamp": "2024-11-12 23:52",
-        "light_level": 112.07,
-        "humidity": 81.93,
-        "temperature": 24.33
-    },
-    {
-        "id": 3570,
-        "timestamp": "2024-11-12 23:53",
-        "light_level": 101.29,
-        "humidity": 79.93,
-        "temperature": 26.21
-    },
-    {
-        "id": 3571,
-        "timestamp": "2024-11-12 23:54",
-        "light_level": 86.73,
-        "humidity": 79.67,
-        "temperature": 26.0
-    },
-    {
-        "id": 3572,
-        "timestamp": "2024-11-12 23:55",
-        "light_level": 115.33,
-        "humidity": 81.13,
-        "temperature": 25.8
-    },
-    {
-        "id": 3573,
-        "timestamp": "2024-11-12 23:56",
-        "light_level": 94.2,
-        "humidity": 81.33,
-        "temperature": 24.27
-    },
-    {
-        "id": 3574,
-        "timestamp": "2024-11-12 23:57",
-        "light_level": 109.13,
-        "humidity": 79.13,
-        "temperature": 26.0
-    },
-    {
-        "id": 3575,
-        "timestamp": "2024-11-12 23:58",
-        "light_level": 88.57,
-        "humidity": 81.79,
-        "temperature": 24.93
-    },
-    {
-        "id": 3576,
-        "timestamp": "2024-11-12 23:59",
-        "light_level": 101.6,
-        "humidity": 80.73,
-        "temperature": 24.07
-    },
-    {
-        "id": 3577,
-        "timestamp": "2024-11-13 00:00",
-        "light_level": 86.07,
-        "humidity": 81.4,
-        "temperature": 24.07
-    },
-    {
-        "id": 3578,
-        "timestamp": "2024-11-13 00:01",
-        "light_level": 89.8,
-        "humidity": 79.47,
-        "temperature": 25.27
-    },
-    {
-        "id": 3579,
-        "timestamp": "2024-11-13 00:02",
-        "light_level": 104.27,
-        "humidity": 82.47,
-        "temperature": 24.53
-    },
-    {
-        "id": 3580,
-        "timestamp": "2024-11-13 00:03",
-        "light_level": 101.21,
-        "humidity": 76.0,
-        "temperature": 24.21
-    },
-    {
-        "id": 3581,
-        "timestamp": "2024-11-13 00:04",
-        "light_level": 109.0,
-        "humidity": 79.2,
-        "temperature": 26.53
-    },
-    {
-        "id": 3582,
-        "timestamp": "2024-11-13 00:05",
-        "light_level": 98.6,
-        "humidity": 80.27,
-        "temperature": 25.47
-    },
-    {
-        "id": 3583,
-        "timestamp": "2024-11-13 00:06",
-        "light_level": 98.2,
-        "humidity": 75.67,
-        "temperature": 25.47
-    },
-    {
-        "id": 3584,
-        "timestamp": "2024-11-13 00:07",
-        "light_level": 98.73,
-        "humidity": 77.47,
-        "temperature": 26.07
-    },
-    {
-        "id": 3585,
-        "timestamp": "2024-11-13 00:08",
-        "light_level": 98.07,
-        "humidity": 79.5,
-        "temperature": 25.57
-    },
-    {
-        "id": 3586,
-        "timestamp": "2024-11-13 00:09",
-        "light_level": 93.6,
-        "humidity": 81.07,
-        "temperature": 24.27
-    },
-    {
-        "id": 3587,
-        "timestamp": "2024-11-13 00:10",
-        "light_level": 100.07,
-        "humidity": 80.87,
-        "temperature": 26.67
-    },
-    {
-        "id": 3588,
-        "timestamp": "2024-11-13 00:11",
-        "light_level": 79.07,
-        "humidity": 79.8,
-        "temperature": 23.93
-    },
-    {
-        "id": 3589,
-        "timestamp": "2024-11-13 00:12",
-        "light_level": 110.4,
-        "humidity": 79.87,
-        "temperature": 25.0
-    },
-    {
-        "id": 3590,
-        "timestamp": "2024-11-13 00:13",
-        "light_level": 100.93,
-        "humidity": 81.21,
-        "temperature": 25.79
-    },
-    {
-        "id": 3591,
-        "timestamp": "2024-11-13 00:14",
-        "light_level": 103.27,
-        "humidity": 82.93,
-        "temperature": 24.73
-    },
-    {
-        "id": 3592,
-        "timestamp": "2024-11-13 00:15",
-        "light_level": 109.47,
-        "humidity": 81.8,
-        "temperature": 25.13
-    },
-    {
-        "id": 3593,
-        "timestamp": "2024-11-13 00:16",
-        "light_level": 92.2,
-        "humidity": 81.67,
-        "temperature": 24.93
-    },
-    {
-        "id": 3594,
-        "timestamp": "2024-11-13 00:17",
-        "light_level": 91.36,
-        "humidity": 78.36,
-        "temperature": 25.07
-    },
-    {
-        "id": 3595,
-        "timestamp": "2024-11-13 00:18",
-        "light_level": 95.13,
-        "humidity": 80.73,
-        "temperature": 24.73
-    },
-    {
-        "id": 3596,
-        "timestamp": "2024-11-13 00:19",
-        "light_level": 101.33,
-        "humidity": 78.73,
-        "temperature": 24.73
-    },
-    {
-        "id": 3597,
-        "timestamp": "2024-11-13 00:20",
-        "light_level": 94.27,
-        "humidity": 79.53,
-        "temperature": 25.47
-    },
-    {
-        "id": 3598,
-        "timestamp": "2024-11-13 00:21",
-        "light_level": 88.27,
-        "humidity": 78.67,
-        "temperature": 23.93
-    },
-    {
-        "id": 3599,
-        "timestamp": "2024-11-13 00:22",
-        "light_level": 107.14,
-        "humidity": 78.5,
-        "temperature": 25.43
-    },
-    {
-        "id": 3600,
-        "timestamp": "2024-11-13 00:23",
-        "light_level": 101.47,
-        "humidity": 79.27,
-        "temperature": 24.13
-    },
-    {
-        "id": 3601,
-        "timestamp": "2024-11-13 00:24",
-        "light_level": 105.67,
-        "humidity": 79.53,
-        "temperature": 24.13
-    },
-    {
-        "id": 3602,
-        "timestamp": "2024-11-13 00:25",
-        "light_level": 113.33,
-        "humidity": 81.27,
-        "temperature": 24.87
-    },
-    {
-        "id": 3603,
-        "timestamp": "2024-11-13 00:26",
-        "light_level": 108.21,
-        "humidity": 79.71,
-        "temperature": 25.07
-    },
-    {
-        "id": 3604,
-        "timestamp": "2024-11-13 00:27",
-        "light_level": 104.2,
-        "humidity": 82.53,
-        "temperature": 24.6
-    },
-    {
-        "id": 3605,
-        "timestamp": "2024-11-13 00:28",
-        "light_level": 103.6,
-        "humidity": 76.07,
-        "temperature": 24.47
-    },
-    {
-        "id": 3606,
-        "timestamp": "2024-11-13 00:29",
-        "light_level": 97.07,
-        "humidity": 80.2,
-        "temperature": 24.6
-    },
-    {
-        "id": 3607,
-        "timestamp": "2024-11-13 00:30",
-        "light_level": 100.57,
-        "humidity": 84.71,
-        "temperature": 25.43
-    },
-    {
-        "id": 3608,
-        "timestamp": "2024-11-13 00:31",
-        "light_level": 92.13,
-        "humidity": 80.33,
-        "temperature": 24.8
-    },
-    {
-        "id": 3609,
-        "timestamp": "2024-11-13 00:32",
-        "light_level": 96.53,
-        "humidity": 79.33,
-        "temperature": 24.47
-    },
-    {
-        "id": 3610,
-        "timestamp": "2024-11-13 00:33",
-        "light_level": 99.27,
-        "humidity": 79.2,
-        "temperature": 24.33
-    },
-    {
-        "id": 3611,
-        "timestamp": "2024-11-13 00:34",
-        "light_level": 94.0,
-        "humidity": 79.79,
-        "temperature": 25.57
-    },
-    {
-        "id": 3612,
-        "timestamp": "2024-11-13 00:35",
-        "light_level": 94.33,
-        "humidity": 78.07,
-        "temperature": 24.93
-    },
-    {
-        "id": 3613,
-        "timestamp": "2024-11-13 00:36",
-        "light_level": 104.33,
-        "humidity": 80.93,
-        "temperature": 24.73
-    },
-    {
-        "id": 3614,
-        "timestamp": "2024-11-13 00:37",
-        "light_level": 112.13,
-        "humidity": 82.13,
-        "temperature": 25.53
-    },
-    {
-        "id": 3615,
-        "timestamp": "2024-11-13 00:38",
-        "light_level": 103.14,
-        "humidity": 78.5,
-        "temperature": 24.64
-    },
-    {
-        "id": 3616,
-        "timestamp": "2024-11-13 00:39",
-        "light_level": 121.13,
-        "humidity": 80.67,
-        "temperature": 24.47
-    },
-    {
-        "id": 3617,
-        "timestamp": "2024-11-13 00:40",
-        "light_level": 96.87,
-        "humidity": 81.8,
-        "temperature": 22.8
-    },
-    {
-        "id": 3618,
-        "timestamp": "2024-11-13 00:41",
-        "light_level": 93.47,
-        "humidity": 80.87,
-        "temperature": 24.47
-    },
-    {
-        "id": 3619,
-        "timestamp": "2024-11-13 00:42",
-        "light_level": 95.36,
-        "humidity": 77.86,
-        "temperature": 24.93
-    },
-    {
-        "id": 3620,
-        "timestamp": "2024-11-13 00:43",
-        "light_level": 108.07,
-        "humidity": 79.53,
-        "temperature": 23.73
-    },
-    {
-        "id": 3621,
-        "timestamp": "2024-11-13 00:44",
-        "light_level": 111.67,
-        "humidity": 79.07,
-        "temperature": 24.2
-    },
-    {
-        "id": 3622,
-        "timestamp": "2024-11-13 00:45",
-        "light_level": 98.2,
-        "humidity": 81.8,
-        "temperature": 25.87
-    },
-    {
-        "id": 3623,
-        "timestamp": "2024-11-13 00:46",
-        "light_level": 94.93,
-        "humidity": 81.36,
-        "temperature": 25.64
-    },
-    {
         "id": 3624,
         "timestamp": "2024-11-13 00:47",
         "light_level": 102.8,
@@ -698,5 +236,467 @@
         "light_level": 103.0,
         "humidity": 81.6,
         "temperature": 24.07
+    },
+    {
+        "id": 3658,
+        "timestamp": "2024-11-13 11:20",
+        "light_level": 145.0,
+        "humidity": 74.1,
+        "temperature": 29.3
+    },
+    {
+        "id": 3659,
+        "timestamp": "2024-11-13 11:21",
+        "light_level": 160.12,
+        "humidity": 74.04,
+        "temperature": 29.33
+    },
+    {
+        "id": 3660,
+        "timestamp": "2024-11-13 11:22",
+        "light_level": 161.65,
+        "humidity": 74.11,
+        "temperature": 29.4
+    },
+    {
+        "id": 3661,
+        "timestamp": "2024-11-13 11:23",
+        "light_level": 163.52,
+        "humidity": 74.13,
+        "temperature": 29.46
+    },
+    {
+        "id": 3662,
+        "timestamp": "2024-11-13 11:24",
+        "light_level": 160.35,
+        "humidity": 73.69,
+        "temperature": 29.5
+    },
+    {
+        "id": 3663,
+        "timestamp": "2024-11-13 11:25",
+        "light_level": 162.92,
+        "humidity": 73.87,
+        "temperature": 29.54
+    },
+    {
+        "id": 3664,
+        "timestamp": "2024-11-13 11:26",
+        "light_level": 164.7,
+        "humidity": 73.99,
+        "temperature": 29.6
+    },
+    {
+        "id": 3665,
+        "timestamp": "2024-11-13 11:27",
+        "light_level": 160.31,
+        "humidity": 73.6,
+        "temperature": 29.67
+    },
+    {
+        "id": 3666,
+        "timestamp": "2024-11-13 11:28",
+        "light_level": 162.85,
+        "humidity": 73.5,
+        "temperature": 29.7
+    },
+    {
+        "id": 3667,
+        "timestamp": "2024-11-13 11:31",
+        "light_level": 165.16,
+        "humidity": 73.32,
+        "temperature": 29.73
+    },
+    {
+        "id": 3668,
+        "timestamp": "2024-11-13 11:32",
+        "light_level": 160.75,
+        "humidity": 74.12,
+        "temperature": 29.7
+    },
+    {
+        "id": 3669,
+        "timestamp": "2024-11-13 11:33",
+        "light_level": 178.73,
+        "humidity": 73.89,
+        "temperature": 29.8
+    },
+    {
+        "id": 3670,
+        "timestamp": "2024-11-13 11:34",
+        "light_level": 160.69,
+        "humidity": 73.87,
+        "temperature": 29.87
+    },
+    {
+        "id": 3671,
+        "timestamp": "2024-11-13 11:35",
+        "light_level": 147.22,
+        "humidity": 73.66,
+        "temperature": 29.92
+    },
+    {
+        "id": 3672,
+        "timestamp": "2024-11-13 12:56",
+        "light_level": 143.64,
+        "humidity": 73.72,
+        "temperature": 29.99
+    },
+    {
+        "id": 3673,
+        "timestamp": "2024-11-13 12:57",
+        "light_level": 92.0,
+        "humidity": 74.66,
+        "temperature": 29.7
+    },
+    {
+        "id": 3674,
+        "timestamp": "2024-11-13 12:58",
+        "light_level": 91.46,
+        "humidity": 74.6,
+        "temperature": 29.71
+    },
+    {
+        "id": 3675,
+        "timestamp": "2024-11-13 12:59",
+        "light_level": 93.04,
+        "humidity": 74.65,
+        "temperature": 29.8
+    },
+    {
+        "id": 3676,
+        "timestamp": "2024-11-13 13:00",
+        "light_level": 94.0,
+        "humidity": 73.4,
+        "temperature": 29.8
+    },
+    {
+        "id": 3677,
+        "timestamp": "2024-11-13 13:01",
+        "light_level": 93.96,
+        "humidity": 74.0,
+        "temperature": 29.8
+    },
+    {
+        "id": 3678,
+        "timestamp": "2024-11-13 13:02",
+        "light_level": 93.73,
+        "humidity": 74.3,
+        "temperature": 29.82
+    },
+    {
+        "id": 3679,
+        "timestamp": "2024-11-13 13:03",
+        "light_level": 92.71,
+        "humidity": 74.02,
+        "temperature": 29.9
+    },
+    {
+        "id": 3680,
+        "timestamp": "2024-11-13 13:05",
+        "light_level": 106.0,
+        "humidity": 74.9,
+        "temperature": 29.9
+    },
+    {
+        "id": 3681,
+        "timestamp": "2024-11-13 13:38",
+        "light_level": 258.0,
+        "humidity": 57.0,
+        "temperature": 27.3
+    },
+    {
+        "id": 3682,
+        "timestamp": "2024-11-13 13:39",
+        "light_level": 226.56,
+        "humidity": 57.52,
+        "temperature": 27.18
+    },
+    {
+        "id": 3683,
+        "timestamp": "2024-11-13 13:41",
+        "light_level": 224.43,
+        "humidity": 57.74,
+        "temperature": 27.14
+    },
+    {
+        "id": 3684,
+        "timestamp": "2024-11-13 13:42",
+        "light_level": 237.36,
+        "humidity": 58.15,
+        "temperature": 27.32
+    },
+    {
+        "id": 3685,
+        "timestamp": "2024-11-13 13:43",
+        "light_level": 234.56,
+        "humidity": 57.6,
+        "temperature": 27.3
+    },
+    {
+        "id": 3686,
+        "timestamp": "2024-11-13 13:44",
+        "light_level": 232.0,
+        "humidity": 58.0,
+        "temperature": 27.1
+    },
+    {
+        "id": 3687,
+        "timestamp": "2024-11-13 13:45",
+        "light_level": 228.25,
+        "humidity": 58.32,
+        "temperature": 27.0
+    },
+    {
+        "id": 3688,
+        "timestamp": "2024-11-13 13:46",
+        "light_level": 226.82,
+        "humidity": 58.2,
+        "temperature": 27.08
+    },
+    {
+        "id": 3689,
+        "timestamp": "2024-11-13 13:53",
+        "light_level": 232.71,
+        "humidity": 57.96,
+        "temperature": 27.09
+    },
+    {
+        "id": 3690,
+        "timestamp": "2024-11-13 13:54",
+        "light_level": 238.06,
+        "humidity": 58.48,
+        "temperature": 26.87
+    },
+    {
+        "id": 3691,
+        "timestamp": "2024-11-13 13:55",
+        "light_level": 246.5,
+        "humidity": 58.15,
+        "temperature": 27.08
+    },
+    {
+        "id": 3692,
+        "timestamp": "2024-11-13 13:56",
+        "light_level": 239.77,
+        "humidity": 58.12,
+        "temperature": 27.08
+    },
+    {
+        "id": 3693,
+        "timestamp": "2024-11-13 13:57",
+        "light_level": 239.22,
+        "humidity": 58.51,
+        "temperature": 27.2
+    },
+    {
+        "id": 3694,
+        "timestamp": "2024-11-13 13:58",
+        "light_level": 223.04,
+        "humidity": 58.22,
+        "temperature": 27.45
+    },
+    {
+        "id": 3695,
+        "timestamp": "2024-11-13 13:59",
+        "light_level": 224.0,
+        "humidity": 57.4,
+        "temperature": 27.4
+    },
+    {
+        "id": 3696,
+        "timestamp": "2024-11-13 14:00",
+        "light_level": 228.67,
+        "humidity": 58.43,
+        "temperature": 27.35
+    },
+    {
+        "id": 3697,
+        "timestamp": "2024-11-13 14:03",
+        "light_level": 238.25,
+        "humidity": 58.2,
+        "temperature": 27.48
+    },
+    {
+        "id": 3698,
+        "timestamp": "2024-11-13 14:04",
+        "light_level": 222.33,
+        "humidity": 57.93,
+        "temperature": 27.3
+    },
+    {
+        "id": 3699,
+        "timestamp": "2024-11-13 14:05",
+        "light_level": 230.27,
+        "humidity": 58.01,
+        "temperature": 27.38
+    },
+    {
+        "id": 3700,
+        "timestamp": "2024-11-13 14:09",
+        "light_level": 216.91,
+        "humidity": 58.45,
+        "temperature": 27.52
+    },
+    {
+        "id": 3701,
+        "timestamp": "2024-11-13 14:10",
+        "light_level": 223.92,
+        "humidity": 58.28,
+        "temperature": 27.55
+    },
+    {
+        "id": 3702,
+        "timestamp": "2024-11-13 14:12",
+        "light_level": 241.0,
+        "humidity": 58.02,
+        "temperature": 27.59
+    },
+    {
+        "id": 3703,
+        "timestamp": "2024-11-13 14:13",
+        "light_level": 242.2,
+        "humidity": 57.39,
+        "temperature": 27.52
+    },
+    {
+        "id": 3704,
+        "timestamp": "2024-11-13 14:14",
+        "light_level": 155.5,
+        "humidity": 58.68,
+        "temperature": 27.43
+    },
+    {
+        "id": 3705,
+        "timestamp": "2024-11-13 14:15",
+        "light_level": 114.7,
+        "humidity": 61.38,
+        "temperature": 27.99
+    },
+    {
+        "id": 3706,
+        "timestamp": "2024-11-13 14:16",
+        "light_level": 113.61,
+        "humidity": 59.96,
+        "temperature": 28.53
+    },
+    {
+        "id": 3707,
+        "timestamp": "2024-11-13 14:17",
+        "light_level": 127.88,
+        "humidity": 58.0,
+        "temperature": 28.88
+    },
+    {
+        "id": 3708,
+        "timestamp": "2024-11-13 14:18",
+        "light_level": 133.38,
+        "humidity": 57.05,
+        "temperature": 29.1
+    },
+    {
+        "id": 3709,
+        "timestamp": "2024-11-13 14:19",
+        "light_level": 116.59,
+        "humidity": 57.14,
+        "temperature": 29.26
+    },
+    {
+        "id": 3710,
+        "timestamp": "2024-11-13 14:20",
+        "light_level": 122.5,
+        "humidity": 56.28,
+        "temperature": 29.39
+    },
+    {
+        "id": 3711,
+        "timestamp": "2024-11-13 14:21",
+        "light_level": 113.22,
+        "humidity": 54.85,
+        "temperature": 29.33
+    },
+    {
+        "id": 3712,
+        "timestamp": "2024-11-13 14:22",
+        "light_level": 87.92,
+        "humidity": 54.51,
+        "temperature": 29.25
+    },
+    {
+        "id": 3713,
+        "timestamp": "2024-11-13 14:23",
+        "light_level": 90.05,
+        "humidity": 54.73,
+        "temperature": 29.2
+    },
+    {
+        "id": 3714,
+        "timestamp": "2024-11-13 14:24",
+        "light_level": 135.83,
+        "humidity": 53.79,
+        "temperature": 29.13
+    },
+    {
+        "id": 3715,
+        "timestamp": "2024-11-13 14:25",
+        "light_level": 151.21,
+        "humidity": 53.8,
+        "temperature": 28.95
+    },
+    {
+        "id": 3716,
+        "timestamp": "2024-11-13 14:26",
+        "light_level": 147.15,
+        "humidity": 53.17,
+        "temperature": 28.47
+    },
+    {
+        "id": 3717,
+        "timestamp": "2024-11-13 14:27",
+        "light_level": 163.65,
+        "humidity": 53.8,
+        "temperature": 28.19
+    },
+    {
+        "id": 3718,
+        "timestamp": "2024-11-13 14:28",
+        "light_level": 153.0,
+        "humidity": 53.81,
+        "temperature": 28.01
+    },
+    {
+        "id": 3719,
+        "timestamp": "2024-11-13 14:29",
+        "light_level": 176.1,
+        "humidity": 54.11,
+        "temperature": 27.9
+    },
+    {
+        "id": 3720,
+        "timestamp": "2024-11-13 14:30",
+        "light_level": 121.54,
+        "humidity": 55.28,
+        "temperature": 27.85
+    },
+    {
+        "id": 3721,
+        "timestamp": "2024-11-13 14:31",
+        "light_level": 99.42,
+        "humidity": 56.75,
+        "temperature": 28.19
+    },
+    {
+        "id": 3722,
+        "timestamp": "2024-11-13 14:32",
+        "light_level": 241.65,
+        "humidity": 55.1,
+        "temperature": 28.47
+    },
+    {
+        "id": 3723,
+        "timestamp": "2024-11-13 14:33",
+        "light_level": 320.44,
+        "humidity": 53.22,
+        "temperature": 27.85
     }
 ]

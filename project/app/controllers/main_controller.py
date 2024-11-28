@@ -40,7 +40,7 @@ def get_device_status():
 def control_device():
     """API để điều khiển thiết bị."""
     command = request.get_json().get('cmd', None)
-    print(command)
+    # print(command)
     return handle_control_device(command) 
 
 @main_controller.route('/api/v1/log/query', methods=['POST'])

@@ -139,6 +139,8 @@ def handle_mqtt_message(client, userdata, msg):
         rt_data = db.get_data("realtimedata", limit=200)
         with open("C:\\Users\\vstxckr\\Desktop\\Tren_truong\\IoT_MVC\\project\\app\\data\\sensor_log_realtime.json", "w") as f:
             json.dump(rt_data, f, indent=4)
+        
+        temp["timestamp"] = current_time_m
 
         # update sensor_data để emit lên socket
         sensor_data.update(temp)

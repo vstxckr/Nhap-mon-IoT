@@ -1,5 +1,6 @@
 let threshold = 80
 let nChartItems = 20
+let check = false
 function createChart2() {
     satisfactionCtx2 = document.getElementById('satisfaction-chart2').getContext('2d');
     satisfactionChart2 = new Chart(satisfactionCtx2, {
@@ -58,8 +59,28 @@ function triggerAlert(message) {
 function checkCondition() {
     const windspeed = parseInt(document.getElementById("wind-sensor").textContent) || 0;
     if (windspeed > threshold) { // Điều kiện ví dụ
-        triggerAlert("Wind speed is high!");
+        if (check == false)
+        {
+            check = true
+            fetch('/api/v1/device/control', { // Thay thế URL bằng URL server của bạn
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Định dạng dữ liệu là JSON
+                    },
+                    body: JSON.stringify({ 'cmd': 'alert' }) // Chuyển tham số 'cmd' thành JSON
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Response:', data); // In ra phản hồi từ server
+                })
+                .catch((error) => {
+                    console.error('Error:', error); // Bắt lỗi nếu có lỗi xảy ra
+            });
+        }
+
+            triggerAlert("Wind speed is high!");
     } else {
+        check = false
         let message = "Wind speed is normal"
         const alertBox = document.getElementById("alert-box");
         const alertContent = document.getElementById("alert-content");
